@@ -1,18 +1,13 @@
 from flask import Flask
 
-import views
+
+app = Flask(__name__)
 
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object("settings")
-
-    app.add_url_rule("/", view_func=views.home_page)
-
-    return app
+@app.route("/")
+def home_page():
+    return "Hello, world!"
 
 
 if __name__ == "__main__":
-    app = create_app()
-    port = app.config.get("PORT", 8080)
-    app.run(host="0.0.0.0", port=port)
+    app.run()
