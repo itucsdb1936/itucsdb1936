@@ -16,6 +16,8 @@ from flask import Flask
 
 #import views
 
+app=Flask(__name__)
+
 @app.route("/")
 def home_page():
     today = datetime.today()
