@@ -1,13 +1,32 @@
+#from flask import Flask
+#
+#
+#app = Flask(__name__)
+#
+#
+#@app.route("/")
+#def home_page():
+#    return "Hello, ITU!"
+##This is going well
+#
+#if __name__ == "__main__":
+#    app.run()
+
 from flask import Flask
 
+import views
 
-app = Flask(__name__)
 
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object("settings")
 
-@app.route("/")
-def home_page():
-    return "Hello, ITU!"
-#This is going well
+    app.add_url_rule("/", view_func=views.home_page)
+
+    return app
+
 
 if __name__ == "__main__":
-    app.run()
+    app = create_app()
+    port = app.config.get("PORT", 8080)
+    app.run(host="0.0.0.0", port=port)
