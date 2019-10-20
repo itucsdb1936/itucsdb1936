@@ -22,6 +22,7 @@ import psycopg2
 
 #from sqlalchemy import create_engine
 
+import os
 from datetime import datetime
 
 #import views
@@ -40,30 +41,37 @@ app=Flask(__name__)
 #conn = engine.raw_connection()
 #cur = conn.cursor()
 
-try:
-    connection = psycopg2.connect(user = "postgres",
+
+connection = psycopg2.connect(user = "postgres",
                                   password = "docker",
                                   host = "localhost",
                                   port = "5432",
                                   database = "postgres")
 
-    cursor = connection.cursor()
+cursor = connection.cursor()
+
+create_table_query = '''CREATE TABLE mobile
+          (ID INT PRIMARY KEY     NOT NULL,
+          MODEL           TEXT    NOT NULL,
+          PRICE         REAL); '''
+    
+cursor.execute(create_table_query)
+connection.commit()
+print("Table created successfully in PostgreSQL ")
+
     # Print PostgreSQL Connection properties
-    print ( connection.get_dsn_parameters(),"\n")
+print ( connection.get_dsn_parameters(),"\n")
 
     # Print PostgreSQL version
-    cursor.execute("SELECT version();")
-    record = cursor.fetchone()
-    print("You are connected to - ", record,"\n")
+cursor.execute("SELECT version();")
+record = cursor.fetchone()
+print("You are connected to - ", record,"\n")
 
-except (Exception, psycopg2.Error) as error :
-    print ("Error while connecting to PostgreSQL", error)
-finally:
     #closing database connection.
-        if(connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+if(connection):
+    cursor.close()
+    connection.close()
+    print("PostgreSQL connection is closed")
 
 @app.route("/")
 def home_page():
