@@ -16,13 +16,13 @@ from flask import Flask
 
 from flask import render_template
 
+import os
 import psycopg2
 
 #from psycopg2 import sql
 
 #from sqlalchemy import create_engine
 
-import os
 from datetime import datetime
 
 #import views
@@ -41,12 +41,14 @@ app=Flask(__name__)
 #conn = engine.raw_connection()
 #cur = conn.cursor()
 
-
+#DATABASE_URL = os.environ['postgres://postgres:docker@localhost:5432/postgres']
+#connection = psycopg2.connect(DATABASE_URL, sslmode='require')
 connection = psycopg2.connect(user = "postgres",
                                   password = "docker",
                                   host = "localhost",
                                   port = "5432",
-                                  database = "postgres")
+                                  database = "postgres",
+                                  sslmode='require')
 
 cursor = connection.cursor()
 
