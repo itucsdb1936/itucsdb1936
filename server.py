@@ -17,7 +17,24 @@ from flask import Flask
 from flask import render_template
 
 import os
-import psycopg2
+import sys
+
+import psycopg2 as dbapi2
+
+INIT_STATEMENTS = [
+    "CREATE TABLE IF NOT EXISTS DUMMY (NUM INTEGER)",
+    "INSERT INTO DUMMY VALUES (42)",
+]
+
+def initialize(url):
+    with dbapi2.connect(url) as connection:
+        cursor = connection.cursor()
+        for statement in INIT_STATEMENTS:
+            cursor.execute(statement)
+        cursor.close()
+
+#import os
+#import psycopg2
 
 #from psycopg2 import sql
 
@@ -43,37 +60,39 @@ app=Flask(__name__)
 
 #DATABASE_URL = os.environ['postgres://postgres:docker@localhost:5432/postgres']
 #connection = psycopg2.connect(DATABASE_URL, sslmode='require')
-connection = psycopg2.connect(user = "postgres",
-                                  password = "docker",
-                                  host = "localhost",
-                                  port = "5432",
-                                  database = "postgres",
-                                  sslmode='require')
 
-cursor = connection.cursor()
+#DATABASE_URL="postgres://postgres:docker@localhost:5432/postgres"
+#connection = psycopg2.connect(user = "postgres",
+#                                  password = "docker",
+#                                  host = "localhost",
+#                                  port = "5432",
+#                                  database = "postgres",
+#                                  sslmode='require')
 
-create_table_query = '''CREATE TABLE mobile
-          (ID INT PRIMARY KEY     NOT NULL,
-          MODEL           TEXT    NOT NULL,
-          PRICE         REAL); '''
-    
-cursor.execute(create_table_query)
-connection.commit()
-print("Table created successfully in PostgreSQL ")
+#cursor = connection.cursor()
 
-    # Print PostgreSQL Connection properties
-print ( connection.get_dsn_parameters(),"\n")
-
-    # Print PostgreSQL version
-cursor.execute("SELECT version();")
-record = cursor.fetchone()
-print("You are connected to - ", record,"\n")
-
-    #closing database connection.
-if(connection):
-    cursor.close()
-    connection.close()
-    print("PostgreSQL connection is closed")
+#create_table_query = '''CREATE TABLE mobile
+#          (ID INT PRIMARY KEY     NOT NULL,
+#          MODEL           TEXT    NOT NULL,
+#          PRICE         REAL); '''
+#    
+#cursor.execute(create_table_query)
+#connection.commit()
+#print("Table created successfully in PostgreSQL ")
+#
+#    # Print PostgreSQL Connection properties
+#print ( connection.get_dsn_parameters(),"\n")
+#
+#    # Print PostgreSQL version
+#cursor.execute("SELECT version();")
+#record = cursor.fetchone()
+#print("You are connected to - ", record,"\n")
+#
+#    #closing database connection.
+#if(connection):
+#    cursor.close()
+#    connection.close()
+#    print("PostgreSQL connection is closed")
 
 @app.route("/")
 def home_page():
@@ -91,6 +110,13 @@ def home_page():
 
 
 if __name__ == "__main__":
+    #url = os.getenv("DATABASE_URL")
+    DATABASE_URL="postgres://postgres:docker@localhost:5432/postgres"
+#    if url is None:
+#        print("Usage: DATABASE_URL=url python dbinit.py", file=sys.stderr)
+#        sys.exit(1)
+#    initialize(url)
+    initialize(DATABASE_URL)
     #app = create_app()
     #port = app.config.get("PORT", 8080)
     app.run()
