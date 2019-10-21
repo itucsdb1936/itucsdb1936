@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}Meetings{% endblock %}
+{% block content %}
+    <h1 class="title">Meetings</h1>
+
+    <table class="table">
+    {% for i in range(0,len) %}
+      <tr>
+        <th>Topic:</th>
+        <td>{{ rows[i][0] }}</td>
+        <th>Room:</th>
+        <td>{{ rows[i][1] }}</td>
+    {%endfor%} 
+    </table>
+{% endblock %}
