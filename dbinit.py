@@ -5,10 +5,17 @@ import psycopg2 as dbapi2
 
 
 INIT_STATEMENTS = [
-    "CREATE TABLE IF NOT EXISTS MEETINGS (topic varchar(64), room int)",
-    "INSERT INTO MEETINGS VALUES ('flask project', '216')",
-    "INSERT INTO MEETINGS VALUES ('coffee machine', '104')",
-]
+   '''create table IF NOT EXISTS MEETINGS (
+        ID int NOT NULL,
+        PlaceID int NOT NULL,
+        StatusID int NOT NULL,
+        DATE date NOT NULL,
+        TIME time NOT NULL,
+        Duration time,
+        Topic varchar(500)NOT NULL,
+        RESULT varchar(1500),
+        PRIMARY key (ID)
+        );''']
 
 
 def initialize(url):
