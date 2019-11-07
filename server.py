@@ -21,16 +21,18 @@ from flask import render_template
 
 import psycopg2 as dbapi2
 
-INIT_STATEMENTS = [
-    '''create table IF NOT EXISTS MEETINGS (ID int NOT NULL,PlaceID int NOT NULL,
-        StatusID int NOT NULL,
-        DATE date NOT NULL,
-        TIME time NOT NULL,
-        Duration time,
-        Topic varchar(500)NOT NULL,
-        RESULT varchar(1500),
-        PRIMARY key (ID)
-        );''']
+#INIT_STATEMENTS = [
+#   '''create table IF NOT EXISTS MEETINGS (
+#        ID int NOT NULL,
+#        PlaceID int NOT NULL,
+#        StatusID int NOT NULL,
+#        DATE date NOT NULL,
+#        TIME time NOT NULL,
+#        Duration time,
+#        Topic varchar(500)NOT NULL,
+#        RESULT varchar(1500),
+#        PRIMARY key (ID)
+#        );''']
 
 
 
@@ -91,7 +93,7 @@ if __name__ == "__main__":
 #        sys.exit(1)
 #    initialize(url)
     
-    initialize(DATABASE_URL)
+#    initialize(DATABASE_URL)
     
     #query(DATABASE_URL)
     #app = create_app()
