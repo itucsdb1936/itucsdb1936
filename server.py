@@ -86,7 +86,7 @@ if __name__ == "__main__":
 #        sys.exit(1)
 #    initialize(url)
     
-    initialize(DATABASE_URL)
+#    initialize(DATABASE_URL)
     
     #query(DATABASE_URL)
     #app = create_app()
