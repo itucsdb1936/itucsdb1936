@@ -66,7 +66,7 @@ def home_page():
 
 @app.route("/meetings")
 def meetings_page():
-    rows = query("postgres://postgres:docker@localhost:5432/postgres")
+    rows = query("postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0")
     return render_template("meetings.html", rows=sorted(rows), len=len(rows))
 
 #def create_app():
@@ -80,7 +80,7 @@ def meetings_page():
 
 if __name__ == "__main__":
     #url = os.getenv("DATABASE_URL")
-    DATABASE_URL="postgres://postgres:docker@localhost:5432/postgres"
+    DATABASE_URL="postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
 #    if url is None:
 #        print("Usage: DATABASE_URL=url python dbinit.py", file=sys.stderr)
 #        sys.exit(1)
