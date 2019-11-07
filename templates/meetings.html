@@ -6,10 +6,22 @@
     <table class="table">
     {% for i in range(0,len) %}
       <tr>
-        <th>Topic:</th>
+          <th>ID :</th>
         <td>{{ rows[i][0] }}</td>
-        <th>Room:</th>
+          <th>PlaceID :</th>
         <td>{{ rows[i][1] }}</td>
+          <th>StatusID :</th>
+        <td>{{ rows[i][12] }}</td>
+          <th>DATE :</th>
+        <td>{{ rows[i][3] }}</td>
+          <th>TIME :</th>
+        <td>{{ rows[i][4] }}</td>
+          <th>Duration :</th>
+        <td>{{ rows[i][5] }}</td>
+          <th>Topic :</th>
+        <td>{{ rows[i][6] }}</td>
+          <th>RESULT :</th>
+        <td>{{ rows[i][7] }}</td>
     {%endfor%} 
     </table>
 {% endblock %}
