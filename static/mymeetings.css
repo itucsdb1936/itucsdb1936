@@ -1,3 +1,9 @@
+body {
+    background-image:url(wallpaper.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
 h1.title {
     color: #e9601a;
 }
