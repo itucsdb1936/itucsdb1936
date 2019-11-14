@@ -6,6 +6,8 @@
     <title>My meetings - {% block title %}{% endblock %}</title>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"/>
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet"
           href="{{ url_for('static', filename='mymeetings.css') }}"/>
   </head>
@@ -20,7 +22,7 @@
             <a class="button is-link" href="{{ url_for('meetings_page') }}">Meetings</a>
           </span>
           <span class="navbar-item">
-            <a class="button is-link" href="{{ url_for('login_page') }}">Login</a>
+            <a class="button is-warning" href="{{ url_for('login_page') }}">Login</a>
           </span>
         </div>
       </nav>
