@@ -13,8 +13,8 @@
 #    app.run()
 
 from flask import Flask
-
 from flask import render_template
+from flask import request, redirect, url_for
 
 #import os
 #import sys
@@ -36,13 +36,13 @@ import psycopg2 as dbapi2
 
 
 
-def initialize(url):
-    with dbapi2.connect(url) as connection:
-        cursor = connection.cursor()
-        for statement in INIT_STATEMENTS:
-            cursor.execute(statement)
-        
-        cursor.close()
+#def initialize(url):
+#    with dbapi2.connect(url) as connection:
+#        cursor = connection.cursor()
+#        for statement in INIT_STATEMENTS:
+#            cursor.execute(statement)
+#        
+#        cursor.close()
         
 def query(url):
     with dbapi2.connect(url) as connection:
@@ -79,6 +79,36 @@ def login_page():
 def meetings_page():
     rows = query("postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0")
     return render_template("meetings.html", rows=sorted(rows), len=len(rows))
+
+@app.route("/meetings_add", methods=["GET", "POST"])
+def meetings_add_page():
+    if request.method == "GET":
+        return render_template(
+            "meeting_edit.html"
+        )
+    else:
+        form_id = request.form["id"]
+        form_placeid = request.form["place_id"]
+        form_statusid = request.form["status_id"]
+        form_date = request.form["date"]
+        form_time = request.form["time"]
+        form_duration = request.form["duration"]
+        form_topic = request.form["topic"]
+        form_result = request.form["result"]
+        
+        STATEMENTS = [ '''
+                      INSERT INTO MEETINGS VALUES
+                          (%s, %s, %s, '%s', '%s', '%s', '%s', '%s'); ''' % (form_id, form_placeid, form_statusid, form_date, form_time, form_duration, form_topic, form_result)  ]
+        
+        url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+        with dbapi2.connect(url) as connection:
+            cursor = connection.cursor()
+            for statement in STATEMENTS:
+                cursor.execute(statement)
+        
+            cursor.close()
+        
+        return redirect(url_for("meetings_page"))
 
 #def create_app():
 #    app = Flask(__name__)

@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block title %}Edit movie{% endblock %}
+{% block content %}
+    <h1 class="title">New Meting</h1>
+
+    <form action="" method="post" name="meeting_edit">
+      <div class="field">
+        <label for="id" class="label">ID</label>
+        <div class="control">
+          <input type="number" name="id" class="input"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="place_id" class="label">PlaceID</label>
+        <div class="control">
+          <input type="number" name="place_id" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="status_id" class="label">StatusID</label>
+        <div class="control">
+          <input type="number" name="status_id" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="date" class="label">DATE</label>
+        <div class="control">
+          <input type="text" name="date" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="time" class="label">TIME</label>
+        <div class="control">
+          <input type="text" name="time" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="duration" class="label">Duration</label>
+        <div class="control">
+          <input type="text" name="duration" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="topic" class="label">Topic</label>
+        <div class="control">
+          <input type="text" name="topic" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="result" class="label">RESULT</label>
+        <div class="control">
+          <input type="text" name="result" class="input"/>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary is-small">Save</button>
+        </div>
+      </div>
+    </form>
+{% endblock %}
