@@ -84,7 +84,7 @@ def meetings_page():
 def meetings_add_page():
     if request.method == "GET":
         return render_template(
-            "meeting_edit.html"
+            "meeting_add.html"
         )
     else:
         form_id = request.form["id"]
@@ -109,6 +109,30 @@ def meetings_add_page():
             cursor.close()
         
         return redirect(url_for("meetings_page"))
+    
+@app.route("/meetings_remove", methods=["GET", "POST"])
+def meetings_remove_page():
+    if request.method == "GET":
+        return render_template(
+            "meeting_remove.html"
+        )
+    else:
+        form_id = request.form["id"]
+        
+        STATEMENTS = [ '''
+                      DELETE FROM MEETINGS
+                          WHERE (ID=%s); ''' % (form_id)  ]
+        
+        url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+        with dbapi2.connect(url) as connection:
+            cursor = connection.cursor()
+            for statement in STATEMENTS:
+                cursor.execute(statement)
+        
+            cursor.close()
+        
+        return redirect(url_for("meetings_page"))
+    
 
 #def create_app():
 #    app = Flask(__name__)
