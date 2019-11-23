@@ -14,8 +14,8 @@
             <th>Duration</th>
             <th>Topic</th>
             <th>RESULT</th>
-            <th></th>
-            <th></th>
+            <th>Update</th>
+            <th>Remove</th>
         </tr>
     {% for i in range(0,len) %}
         <tr>
@@ -27,8 +27,19 @@
             <td>{{ rows[i][5] }}</td>
             <td>{{ rows[i][6] }}</td>
             <td>{{ rows[i][7] }}</td>
-            <td><a class="button is-link" href="{{url_for('meetings_update_change_page', id=rows[i][0])}}">Update Meeting</a></td>
-            <td><a class="button is-link" href="{{url_for('meetings_remove', id=rows[i][0]) }}">Remove Meeting</a></td>
+            <td>
+                <a class="button is-link" href="{{url_for('meetings_update_change_page', id=rows[i][0])}}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-edit"></i>
+                    </span></a>
+            </td>
+            <td>
+                <a class="button is-link" href="{{url_for('meetings_remove', id=rows[i][0]) }}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-trash"></i>
+                    </span>
+                </a>
+            </td>
         </tr>
     {%endfor%} 
     </table>
