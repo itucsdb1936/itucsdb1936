@@ -28,7 +28,7 @@
             <td>{{ rows[i][6] }}</td>
             <td>{{ rows[i][7] }}</td>
             <td><a class="button is-link" href=https://itucsdb1936.herokuapp.com/meetings_update_{{ rows[i][0] }}>Update Meeting</a></td>
-            <td>REMOVE</td>
+            <td><a class="button is-link" href="{{ url_for('meetings_remove_page', id=rows[i][0]) }}">Remove Meeting</a></td>
         </tr>
     {%endfor%} 
     </table>
