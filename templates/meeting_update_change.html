@@ -4,13 +4,16 @@
     <h1 class="title">Change Meeting</h1>
 
     <form action="" method="post" name="meeting_add">
+	
       <div class="field">
         <label for="id" class="label">ID</label>
+		<fieldset disabled>
         <div class="control">
           <input type="number" name="id" class="input"  value="{{ row[0] }}"/>
         </div>
+		</fieldset>
       </div>
-
+	
       <div class="field">
         <label for="place_id" class="label">PlaceID</label>
         <div class="control">
