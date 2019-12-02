@@ -87,7 +87,6 @@ def meetings_add_page():
             "meeting_add.html"
         )
     else:
-        form_id = request.form["id"]
         form_placeid = request.form["place_id"]
         form_statusid = request.form["status_id"]
         form_date = request.form["date"]
@@ -98,7 +97,7 @@ def meetings_add_page():
         
         STATEMENTS = [ '''
                       INSERT INTO MEETINGS VALUES
-                          (%s, %s, %s, '%s', '%s', '%s', '%s', '%s'); ''' % (form_id, form_placeid, form_statusid, form_date, form_time, form_duration, form_topic, form_result)  ]
+                          (DEFAULT,%s, %s, '%s', '%s', '%s', '%s', '%s'); ''' % (form_placeid, form_statusid, form_date, form_time, form_duration, form_topic, form_result)  ]
         
         url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
         with dbapi2.connect(url) as connection:

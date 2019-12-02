@@ -6,15 +6,14 @@ import psycopg2 as dbapi2
 
 INIT_STATEMENTS = [
    '''create table IF NOT EXISTS MEETINGS (
-        ID int NOT NULL,
+        ID SERIAL PRIMARY KEY,
         PlaceID int NOT NULL,
         StatusID int NOT NULL,
         DATE date NOT NULL,
         TIME time NOT NULL,
         Duration time,
         Topic varchar(500)NOT NULL,
-        RESULT varchar(1500),
-        PRIMARY key (ID)
+        RESULT varchar(1500)
         );''']
 
 
