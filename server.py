@@ -16,10 +16,12 @@ from flask import Flask
 from flask import render_template
 from flask import request, redirect, url_for
 
-#import os
+import os
 #import sys
 
 import psycopg2 as dbapi2
+
+DATABASE_URL = os.environ['DATABASE_URL']
 
 #INIT_STATEMENTS = [
 #   '''create table IF NOT EXISTS MEETINGS (
@@ -77,7 +79,7 @@ def login_page():
 
 @app.route("/meetings")
 def meetings_page():
-    rows = query("postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0")
+    rows = query(DATABASE_URL)
     return render_template("meetings.html", rows=sorted(rows), len=len(rows))
 
 @app.route("/meetings_add", methods=["GET", "POST"])
@@ -100,13 +102,13 @@ def meetings_add_page():
                       INSERT INTO MEETINGS VALUES
                           (%s, %s, %s, '%s', '%s', '%s', '%s', '%s'); ''' % (form_id, form_placeid, form_statusid, form_date, form_time, form_duration, form_topic, form_result)  ]
         
-        url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+        url= DATABASE_URL
         with dbapi2.connect(url) as connection:
-            cursor = connection.cursor()
-            for statement in STATEMENTS:
-                cursor.execute(statement)
+           cursor = connection.cursor()
+           for statement in STATEMENTS:
+               cursor.execute(statement)
         
-            cursor.close()
+           cursor.close()
         
         return redirect(url_for("meetings_page"))
 
@@ -116,7 +118,7 @@ def meetings_remove(id):
                               DELETE FROM MEETINGS
                                   WHERE (ID=%s); ''' % (id)]
 
-        url = "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+        url= DATABASE_URL
         with dbapi2.connect(url) as connection:
             cursor = connection.cursor()
             for statement in STATEMENTS:
@@ -140,7 +142,7 @@ def meetings_remove_page():
                       DELETE FROM MEETINGS
                           WHERE (ID=%s); ''' % (form_id)  ]
 
-        url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+        url= DATABASE_URL
         with dbapi2.connect(url) as connection:
             cursor = connection.cursor()
             for statement in STATEMENTS:
@@ -191,7 +193,7 @@ def meetings_update_change_page(id):
                       SELECT * FROM MEETINGS
                           WHERE (ID=%s); ''' % (id)  ]
             
-        url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+        url= DATABASE_URL
         with dbapi2.connect(url) as connection:
             cursor = connection.cursor()
             for statement in STATEMENTS:
@@ -216,7 +218,7 @@ def meetings_update_change_page(id):
                           SET ID=%s, PlaceID=%s, StatusID=%s, DATE='%s', TIME='%s', Duration='%s', Topic='%s', RESULT='%s'
                           WHERE ID=%s; ''' % (form_id, form_placeid, form_statusid, form_date, form_time, form_duration, form_topic, form_result, form_id)  ]
         
-        url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+        url= DATABASE_URL
         with dbapi2.connect(url) as connection:
             cursor = connection.cursor()
             for statement in STATEMENTS:
@@ -237,7 +239,7 @@ def meetings_update_change_page(id):
 
 if __name__ == "__main__":
     #url = os.getenv("DATABASE_URL")
-    DATABASE_URL="postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+    #DATABASE_URL="postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
 #    if url is None:
 #        print("Usage: DATABASE_URL=url python dbinit.py", file=sys.stderr)
 #        sys.exit(1)
