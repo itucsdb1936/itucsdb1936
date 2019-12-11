@@ -89,7 +89,6 @@ def meetings_add_page():
             "meeting_add.html"
         )
     else:
-        form_id = request.form["id"]
         form_placeid = request.form["place_id"]
         form_statusid = request.form["status_id"]
         form_date = request.form["date"]
@@ -100,7 +99,7 @@ def meetings_add_page():
         
         STATEMENTS = [ '''
                       INSERT INTO MEETINGS VALUES
-                          (%s, %s, %s, '%s', '%s', '%s', '%s', '%s'); ''' % (form_id, form_placeid, form_statusid, form_date, form_time, form_duration, form_topic, form_result)  ]
+                          (DEFAULT,%s, %s, '%s', '%s', '%s', '%s', '%s'); ''' % (form_placeid, form_statusid, form_date, form_time, form_duration, form_topic, form_result)  ]
         
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:
