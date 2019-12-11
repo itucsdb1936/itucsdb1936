@@ -10,7 +10,7 @@ import views_g
 
 def create_app():
     app=Flask(__name__)
-    app.config["DEBUG"] = True
+    #app.config["DEBUG"] = True
     
     app.add_url_rule("/", view_func=views.home_page)
     app.add_url_rule("/login", view_func=views.login_page)
