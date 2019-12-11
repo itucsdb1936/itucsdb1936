@@ -9,19 +9,26 @@ import views_h
 import views_g
 
 app=Flask(__name__)
-#app.config["DEBUG"] = True
+app.config["DEBUG"] = True
     
 app.add_url_rule("/", view_func=views.home_page)
 app.add_url_rule("/login", view_func=views.login_page)
 
 app.add_url_rule("/meetings", view_func=views_g.meetings_page)
 app.add_url_rule("/meetings_add", methods=["GET", "POST"], view_func=views_g.meetings_add_page)
-app.add_url_rule("/meetings_remove_<int:id>", methods=["GET", "POST"], view_func=views_g.meetings_remove)
 app.add_url_rule("/meetings_remove", methods=["GET", "POST"], view_func=views_g.meetings_remove_page)
+app.add_url_rule("/meetings_remove_<int:id>", methods=["GET", "POST"], view_func=views_g.meetings_remove)
 app.add_url_rule("/meetings_update", methods=["GET", "POST"], view_func=views_g.meetings_update_find_page)
 app.add_url_rule("/meetings_update_<int:id>", methods=["GET", "POST"], view_func=views_g.meetings_update_change_page)
-#    app.add_url_rule(, view_func=views_g.meetings_)
-#    app.add_url_rule(, view_func=views_g.meetings_)
+
+app.add_url_rule("/tech", view_func=views_g.tech_page)
+app.add_url_rule("/tech_add", methods=["GET", "POST"], view_func=views_g.tech_add_page)
+app.add_url_rule("/tech_remove", methods=["GET", "POST"], view_func=views_g.tech_remove_page)
+app.add_url_rule("/tech_remove_<string:name>", methods=["GET", "POST"], view_func=views_g.tech_remove)
+app.add_url_rule("/tech_update", methods=["GET", "POST"], view_func=views_g.tech_update_find_page)
+app.add_url_rule("/tech_update_<string:name>", methods=["GET", "POST"], view_func=views_g.tech_update_change_page)
+
+#app.add_url_rule(, view_func=views_g.tech_)
 
 #def create_app():
 #    app=Flask(__name__)

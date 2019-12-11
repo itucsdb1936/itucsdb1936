@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block title %}Edit tech{% endblock %}
+{% block content %}
+    <h1 class="title">Change tech</h1>
+    
+    <form action="" method="post" name="tech_add">
+      <div class="field">
+        <label for="name" class="label">Name</label>
+        <div class="control">
+          <input type="text" name="name" class="input" value="{{ row[0] }}"/>
+        </div>
+      </div>
+
+      <div class="select">
+        <select name="projector">
+          <option>Select Projector</option>
+          <option value="No projector">No projector</option>
+          <option value="JVC DLA-N7">JVC DLA-N7</option>
+          <option value="Epson EH-TW9400">Epson EH-TW9400</option>
+          <option value="BenQ W2700">BenQ W2700</option>
+        </select>
+      </div>
+      
+      <div class="select">
+        <select name="speaker">
+          <option>Select Speaker</option>
+          <option value="No speaker">No projector</option>
+          <option value="Jabra Speak 510">Jabra Speak 510</option>
+          <option value="Sennheiser SP 20">Sennheiser SP 20</option>
+          <option value="KEF LS50 Wireless">KEF LS50 Wireless</option>
+        </select>
+      </div>
+      
+      <div class="select">
+        <select name="computer">
+          <option>Select Computer</option>
+          <option value="No computer">No computer</option>
+          <option value="Dell OptiPlex 3050 Micro">Dell OptiPlex 3050 Micro</option>
+          <option value="Apple iMac (27-inch, 2019)">Apple iMac (27-inch, 2019)</option>       
+        </select>
+      </div>
+      
+      <div class="select">
+        <select name="digital_whiteboard">
+          <option>Select Digital Whiteboard</option>
+          <option value="No digital whiteboard">No digital whiteboard</option>
+          <option value="Astar AWB-6507">Astar AWB-6507</option>   
+        </select>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary is-small">Update</button>
+        </div>
+      </div>
+    </form>
+
+{% endblock %}

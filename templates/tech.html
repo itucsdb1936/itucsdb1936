@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}Technology Packages{% endblock %}
+{% block content %}
+    <h1 class="title">Technology Packages</h1>
+
+    <table class="table is-narrow is-striped is-hoverable">
+    
+        <tr>
+            <th>Name</th>
+            <th>Projector</th>
+            <th>Speaker</th>
+            <th>Computer</th>
+            <th>Digital Whiteboard</th>
+            <th>Manuals</th>
+            <th>Update</th>
+            <th>Remove</th>
+        </tr>
+    {% for i in range(0,len) %}
+        <tr>
+            <td>{{ rows[i][0] }}</td>
+            <td>{{ rows[i][1] }}</td>
+            <td>{{ rows[i][2] }}</td>
+            <td>{{ rows[i][3] }}</td>
+            <td>{{ rows[i][4] }}</td>
+            <td>{{ rows[i][5] }}</td>
+            <td>
+                <a class="button is-link" href="{{url_for('tech_update_change_page', name=rows[i][0])}}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-edit"></i>
+                    </span></a>
+            </td>
+            <td>
+                <a class="button is-link" href="{{url_for('tech_remove', name=rows[i][0]) }}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-trash"></i>
+                    </span>
+                </a>
+            </td>
+        </tr>
+    {%endfor%} 
+    </table>
+    <div class="field is-grouped is-grouped-centered">
+        <span class="navbar-item">
+                <a class="button is-link" href="{{ url_for('tech_add_page') }}">New Technology Package</a>
+        </span>
+        <span class="navbar-item">
+                <a class="button is-link" href="{{ url_for('tech_remove_page') }}">Remove Technology Package</a>
+        </span>
+         <span class="navbar-item">
+                <a class="button is-link" href="{{ url_for('tech_update_find_page') }}">Update Technology Package</a>
+        </span>
+    </div>
+    
+{% endblock %}
