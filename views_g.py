@@ -17,6 +17,18 @@ def query(url, table_name):
         cursor.close()
         return rows
 
+def validate_tech_form(form):
+    form.data = {}
+    form.errors = {}
+
+    form_name = form.get("name", "").strip()
+    if len(form_name) == 0:
+        form.errors["name"] = "Name can not be blank."
+    else:
+        form.data["name"] = form_name
+
+    return len(form.errors) == 0
+
 def meetings_page():
     rows = query(DATABASE_URL, "MEETINGS")
     return render_template("meetings.html", rows=sorted(rows), len=len(rows))
@@ -145,10 +157,13 @@ def tech_page():
 
 def tech_add_page():
     if request.method == "GET":
-        return render_template(
-            "tech_add.html"
-        )
+        values = {"name":""}
+        return render_template("tech_add.html", values=values)
     else:
+        valid = validate_tech_form(request.form)
+        if not valid:
+            return render_template("tech_add.html", values=request.form)
+        
         form_name = request.form["name"]
         form_projector = request.form["projector"]
         form_speaker = request.form["speaker"]
@@ -186,10 +201,13 @@ def tech_remove(name):
     
 def tech_remove_page():
     if request.method == "GET":
-        return render_template(
-            "tech_remove.html"
-        )
+        values = {"name":""}
+        return render_template("tech_remove.html", values=values)
     else:
+        valid = validate_tech_form(request.form)
+        if not valid:
+            return render_template("tech_remove.html", values=request.form)
+        
         form_name = request.form["name"]
         
         STATEMENTS = [ '''
@@ -208,10 +226,13 @@ def tech_remove_page():
 
 def tech_update_find_page():
     if request.method == "GET":
-        return render_template(
-            "tech_update_find.html"
-        )
+        values = {"name":""}
+        return render_template("tech_update_find.html", values=values)
     else:
+        valid = validate_tech_form(request.form)
+        if not valid:
+            return render_template("tech_update_find.html", values=request.form)
+        
         form_name = request.form["name"]
         
         return redirect(url_for("tech_update_change_page", name=form_name))
@@ -229,10 +250,13 @@ def tech_update_change_page(name):
                 cursor.execute(statement)
                 
             row = cursor.fetchone()
-        return render_template(
-            "tech_update_change.html", row=row
-        )
+        values = {"name":""}
+        return render_template("tech_update_change.html", row=row, values=values)
     else:
+        valid = validate_tech_form(request.form)
+        if not valid:
+            return render_template("tech_add.html", values=request.form)
+        
         form_name = request.form["name"]
         form_projector = request.form["projector"]
         form_speaker = request.form["speaker"]
