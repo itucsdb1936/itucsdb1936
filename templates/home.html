@@ -9,4 +9,103 @@
         </div>
       </div>
     </section>
+    <section class="hero">
+        <h1 class="title">New Comment</h1>
+
+    <form action="" method="post" name="tech_add">
+      <div class="field">
+        <label for="id" class="label">CommentID</label>
+		<fieldset disabled>
+        <div class="control">
+          <input type="number" name="commentid" class="input" placeholder="Auto Increment"/>
+        </div>
+		</fieldset>
+      </div>
+      
+      <div class="field">
+        <label for="name" class="label">Name</label>
+        <div class="control">
+          <input type="text" name="name" class="input"/>
+        </div>
+        {% if 'name' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['name'] }}
+        </p>
+        {% endif %}
+      </div>
+
+      <div class="field">
+        <label for="comment" class="label">Comment</label>
+        <div class="control">
+          <textarea class="textarea" name="comment" placeholder="Maximum 1000 characters"></textarea>
+        </div>
+        {% if 'comment' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['comment'] }}
+        </p>
+        {% endif %}
+      </div>
+      
+      <div class="field">
+        <label for="score" class="label">Score</label>
+        <label for="score" class="radio">
+        <div class="control">
+          1<input type="radio" name="score" value="1">
+        </div>
+        </label>
+        <label for="score" class="radio">
+        <div class="control">
+          2<input type="radio" name="score" value="2">
+        </div>
+        </label>
+        <label for="score" class="radio">
+        <div class="control">
+         3 <input type="radio" name="score" value="3">
+        </div>
+        </label>
+        <label for="score" class="radio">
+        <div class="control">
+          4<input type="radio" name="score" value="4">
+        </div>
+        </label>
+        <label for="score" class="radio">
+        <div class="control">
+          5<input type="radio" name="score" value="5" checked="checked">
+        </div>
+        </label>
+        {% if 'score' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['score'] }}
+        </p>
+        {% endif %}
+      </div>
+      
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary is-small">Add</button>
+        </div>
+      </div>
+    </form>
+    
+    
+        <h1 class="title">Comments</h1>
+
+    <table class="table is-narrow is-striped is-hoverable">
+    
+        <tr>
+            <th>CommentID</th>
+            <th>Name</th>
+            <th>Comment</th>
+            <th>Score</th>
+        </tr>
+    {% for i in range(0,len) %}
+        <tr>
+            <td>{{ rows[i][0] }}</td>
+            <td>{{ rows[i][1] }}</td>
+            <td>{{ rows[i][2] }}</td>
+            <td>{{ rows[i][3] }}</td>
+        </tr>
+    {%endfor%} 
+    </table>
+    </section>
 {% endblock %}

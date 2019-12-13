@@ -11,7 +11,7 @@ import views_g
 app=Flask(__name__)
 app.config["DEBUG"] = True
     
-app.add_url_rule("/", view_func=views.home_page)
+app.add_url_rule("/", methods=["GET", "POST"], view_func=views.home_page)
 app.add_url_rule("/login", view_func=views.login_page)
 
 app.add_url_rule("/meetings", view_func=views_g.meetings_page)
