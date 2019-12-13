@@ -1,15 +1,12 @@
-Welcome to itucsdbNN's documentation!
+Welcome to itucsdb1936's documentation!
 =====================================
 
-:Team: Team Name
+:Team: itucsdb1936
 
 :Members:
 
-   * Member 1
-   * Member 2
-   * Member 3
-   * Member 4
-   * Member 5
+   * Gokay Temizkan
+   * Huveyscan Kamar
 
 **project description goes here (a few paragraphs)**
 
