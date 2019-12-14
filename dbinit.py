@@ -29,8 +29,6 @@ INIT_STATEMENTS = [
 		Department varchar(100) NOT NULL,
 		Location varchar(100) NOT NULL,
 		Capacity INT NOT NULL,
-		FOREIGN KEY (Type) REFERENCES ROOM_TYPES(Type),
-		FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
         );
         
    create table IF NOT EXISTS MEETINGS (
@@ -39,7 +37,6 @@ INIT_STATEMENTS = [
         Date date NOT NULL,
         Time time NOT NULL,
         Topic varchar(500)NOT NULL,
-	FOREIGN KEY (Place_ID) REFERENCES PLACES(ID)
         );	
 	
    create table IF NOT EXISTS PERSONNEL (
@@ -50,7 +47,6 @@ INIT_STATEMENTS = [
 	Professional_Title varchar(50) NOT NULL,
         Phone_Number varchar(13) NOT NULL,
 	Email_Address varchar(50) NOT NULL,
-	FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
         );
 
    create table IF NOT EXISTS PARTICIPANTS (
@@ -60,8 +56,6 @@ INIT_STATEMENTS = [
 	Attendance BOOLEAN,
 	Performance varchar(500),
 	PRIMARY KEY (Meeting_ID,Person_ID),
-	FOREIGN KEY (Meeting_ID) REFERENCES MEETINGS(ID),
-	FOREIGN KEY (Person_ID) REFERENCES PERSONNEL(ID)
 	);
 		
    create table IF NOT EXISTS TECH (
@@ -82,6 +76,13 @@ INIT_STATEMENTS = [
         );
    '''
    ]
+
+#FOREIGN KEY (Type) REFERENCES ROOM_TYPES(Type),
+#FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
+#FOREIGN KEY (Place_ID) REFERENCES PLACES(ID)
+#FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
+#FOREIGN KEY (Meeting_ID) REFERENCES MEETINGS(ID),
+#FOREIGN KEY (Person_ID) REFERENCES PERSONNEL(ID)
 
 
 def initialize(url):
