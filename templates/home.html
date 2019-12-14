@@ -9,8 +9,8 @@
         </div>
       </div>
     </section>
-    <section class="hero">
-    
+	
+    <section class="section">
     <h2 class="title">Rate Us!</h1>
     <form action="" method="post" name="tech_add">
       
@@ -78,9 +78,38 @@
         </div>
       </div>
     </form>
+	</section>
     
+	<section class="section">
+	<div class="columns is-multiline">
+		{% for i in range(0,len) %}
+		<div class="column is-one-quarter">
+			<div class="card">
+				  <div class="card-content">
+				<p class="title">
+				  "{{ rows[i][2] }}"
+				</p>
+				<p class="subtitle">
+				  {{ rows[i][1] }}
+				</p>
+			  </div>
+			  <footer class="card-footer">
+				<p class="card-footer-item is-size-4 is-italic">
+				  <span>
+					<b>{{ rows[i][3] }}</b> stars!
+				  </span>
+				</p>
+				<p class="card-footer-item is-size-7 has-text-grey">
+				  <span>
+					Comment ID: {{ rows[i][0] }}
+				  </span>
+				</p>
+			  </footer>
+			</div>
+	</div>
+	{%endfor%}
     
-        <h2 class="title">Comments</h1>
+     <!--    <h2 class="title">Comments</h1>
 
     <table class="table is-narrow is-striped is-hoverable">
     
@@ -98,6 +127,6 @@
             <td>{{ rows[i][3] }}</td>
         </tr>
     {%endfor%} 
-    </table>
+    </table> -->
     </section>
 {% endblock %}
