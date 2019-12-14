@@ -61,15 +61,25 @@ def meetings_page():
     return render_template("meetings.html", rows=sorted(rows), len=len(rows))
 
 def meetings_add_page():
+    
+    personnel_row = query(DATABASE_URL, "PERSONNEL")        
+    personnel_list =[]
+    personnel_ids=[]
+    length=len(personnel_row)
+    
+    for personnel in range(0, length):
+        personnel_list.append(personnel_row[personnel][1]+' '+personnel_row[personnel][2])
+        personnel_ids.append(personnel_row[personnel][0])
+    
     if request.method == "GET":
         values = {"topic":"", "date":""}
         return render_template(
-            "meeting_add.html", values=values
+            "meeting_add.html", values=values, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length
         )
     else:
         valid = validate_meetings_form(request.form)
         if not valid:
-            return render_template("meeting_add.html", values=request.form)
+            return render_template("meeting_add.html", values=request.form, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length)
         
         form_placeid = request.form["place_id"]
         form_date = request.form["date"]
@@ -80,6 +90,8 @@ def meetings_add_page():
                       INSERT INTO MEETINGS VALUES
                           (DEFAULT, %s, '%s', '%s', '%s'); ''' % (form_placeid, form_date, form_time, form_topic)  ]
         
+        form_participants = request.form.getlist("participants")
+        
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:
            cursor = connection.cursor()
@@ -87,8 +99,31 @@ def meetings_add_page():
                cursor.execute(statement)
         
            cursor.close()
+           
+        add_participants(form_participants)
         
         return redirect(url_for("meetings_page"))
+
+def add_participants(participants):
+    url= DATABASE_URL
+    with dbapi2.connect(url) as connection:
+       cursor = connection.cursor()
+       cursor.execute("SELECT (ID) FROM MEETINGS order by ID desc limit 1")
+       meeting_id=cursor.fetchone()
+    
+       cursor.close()
+    
+    STATEMENTS=[]
+    for participant in participants:
+        print(participant)
+        STATEMENTS.append("INSERT INTO PARTICIPANTS (Meeting_ID, Person_ID) VALUES (%s, %d);" % (meeting_id[0], int(participant)) )
+    
+    with dbapi2.connect(url) as connection:
+       cursor = connection.cursor()
+       for statement in STATEMENTS:
+           cursor.execute(statement)
+    
+       cursor.close()
 
 def meetings_remove(id):
         STATEMENTS = ['''

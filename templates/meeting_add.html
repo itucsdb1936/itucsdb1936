@@ -50,6 +50,20 @@
         </p>
         {% endif %}
       </div>
+      
+      <label for="participants" class="label">Participants</label>
+      <table class="table is-striped is-fullwidth">
+        {% for i in range(0,length) %}
+        <tr>
+          <td>
+            <label class="checkbox">
+              <input type="checkbox" name="participants" value="{{ personnel_ids[i] }}"/>
+              <a>{{ personnel_list[i] }}</a>
+            </label>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
      
       <div class="field is-grouped">
         <div class="control">
