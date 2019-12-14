@@ -34,7 +34,7 @@ def validate_tech_form(form):
 def validate_meetings_form(form):
     form.data = {}
     form.errors = {}
-
+    
     form_topic = form.get("topic", "").strip()
     if len(form_topic) == 0:
         form.errors["topic"] = "Topic can not be blank."
@@ -62,7 +62,7 @@ def meetings_page():
 
 def meetings_add_page():
     if request.method == "GET":
-        values = {"id":"", "date":""}
+        values = {"topic":"", "date":""}
         return render_template(
             "meeting_add.html", values=values
         )
@@ -107,15 +107,10 @@ def meetings_remove(id):
     
 def meetings_remove_page():
     if request.method == "GET":
-        values = {"id":""}
         return render_template(
-            "meeting_remove.html", values=values
+            "meeting_remove.html"
         )
-    else:
-        valid = validate_meetings_form(request.form)
-        if not valid:
-            return render_template("meeting_remove.html", values=request.form)
-        
+    else:        
         form_id = request.form["id"]
         
         STATEMENTS = [ '''
@@ -134,15 +129,11 @@ def meetings_remove_page():
 
 def meetings_update_find_page():
     if request.method == "GET":
-        values = {"id":""}
         return render_template(
-            "meeting_update_find.html", values=values
+            "meeting_update_find.html"
         )
     else:
-        valid = validate_meetings_form(request.form)
-        if not valid:
-            return render_template("meetings_update_find.html", values=request.form)
-        
+
         form_id = request.form["id"]
         
         return redirect(url_for("meetings_update_change_page", id=form_id))
@@ -160,14 +151,25 @@ def meetings_update_change_page(id):
                 cursor.execute(statement)
                 
             row = cursor.fetchone()
-        values = {"id":"","date":"date"}
+        values = {"topic":"","date":"","id":id}
         return render_template(
             "meeting_update_change.html", row=row, values=values
         )
     else:
         valid = validate_tech_form(request.form)
         if not valid:
-            return render_template("meeting_add.html", values=request.form)
+            STATEMENTS = [ '''
+                      SELECT * FROM MEETINGS
+                          WHERE (ID=%s); ''' % (id)  ]
+            
+            url= DATABASE_URL
+            with dbapi2.connect(url) as connection:
+                cursor = connection.cursor()
+                for statement in STATEMENTS:
+                    cursor.execute(statement)
+                    
+            row = cursor.fetchone()
+            return render_template("meeting_update_change.html", row=row, values=request.form)
         
         form_id = request.form["id"]
         form_placeid = request.form["place_id"]
@@ -296,7 +298,19 @@ def tech_update_change_page(name):
     else:
         valid = validate_tech_form(request.form)
         if not valid:
-            return render_template("tech_add.html", values=request.form)
+            STATEMENTS = [ '''
+                      SELECT * FROM TECH
+                          WHERE (name='%s'); ''' % (name)  ]
+            
+            url= DATABASE_URL
+            with dbapi2.connect(url) as connection:
+                cursor = connection.cursor()
+                for statement in STATEMENTS:
+                    cursor.execute(statement)
+                
+            row = cursor.fetchone()
+            row
+            return render_template("tech_update_change.html", row=row, values=request.form)
         
         form_name = request.form["name"]
         form_projector = request.form["projector"]

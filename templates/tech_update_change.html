@@ -9,6 +9,11 @@
         <div class="control">
           <input type="text" name="name" class="input" value="{{ row[0] }}"/>
         </div>
+        {% if 'name' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['name'] }}
+        </p>
+        {% endif %}
       </div>
 
       <div class="select">
@@ -24,7 +29,7 @@
       <div class="select">
         <select name="speaker">
           <option>Select Speaker</option>
-          <option value="No speaker">No projector</option>
+          <option value="No speaker">No pspeaker</option>
           <option value="Jabra Speak 510">Jabra Speak 510</option>
           <option value="Sennheiser SP 20">Sennheiser SP 20</option>
           <option value="KEF LS50 Wireless">KEF LS50 Wireless</option>

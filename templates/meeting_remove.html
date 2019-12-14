@@ -7,13 +7,8 @@
       <div class="field">
         <label for="id" class="label">ID</label>
         <div class="control">
-          <input type="number" name="id" class="input"/>
+          <input type="number" name="id" class="input" required="required"/>
         </div>
-       {% if 'id' in values.errors %}
-        <p class="help has-background-warning">
-            {{ values.errors['id'] }}
-        </p>
-        {% endif %} 
       </div>
       <div class="field is-grouped">
         <div class="control">

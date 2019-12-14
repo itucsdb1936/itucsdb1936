@@ -44,6 +44,11 @@
         <div class="control">
           <input type="text" name="topic" class="input"/>
         </div>
+        {% if 'topic' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['topic'] }}
+        </p>
+        {% endif %}
       </div>
      
       <div class="field is-grouped">
