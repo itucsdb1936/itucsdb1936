@@ -8,24 +8,23 @@ import psycopg2 as dbapi2
 
 INIT_STATEMENTS = [
    '''
-        create table IF NOT EXISTS MEETINGS (
-        ID SERIAL PRIMARY KEY,
-        Place_ID int NOT NULL,
-        Date date NOT NULL,
-        Time time NOT NULL,
-        Topic varchar(500)NOT NULL,
-		FOREIGN KEY (Place_ID) REFERENCES PLACES(ID)
+	create table IF NOT EXISTS DEPARTMENTS (
+		Department_Name varchar(100) PRIMARY KEY,
+		Manager varchar(100) NOT NULL,
+		Location varchar(50) NOT NULL,
+		Capacity INT NOT NULL,
+		Website varchar(100)
         );
-		
-  create table IF NOT EXISTS ROOM_TYPES (
-        Type VARCHAR(100) PRIMARY KEY,
-        Projector VARCHAR(100),
-        Presentation_Computer VARCHAR(100),
+	
+	create table IF NOT EXISTS ROOM_TYPES (
+		Type VARCHAR(100) PRIMARY KEY,
+		Projector VARCHAR(100),
+		Presentation_Computer VARCHAR(100),
 		WhiteBoard VARCHAR(50)
         );
-		
-   create table IF NOT EXISTS PLACES (
-        ID SERIAL PRIMARY KEY,
+	
+	create table IF NOT EXISTS PLACES (
+		ID SERIAL PRIMARY KEY,
 		Type varchar(100) NOT NULL,
 		Department varchar(100) NOT NULL,
 		Location varchar(100) NOT NULL,
@@ -33,36 +32,38 @@ INIT_STATEMENTS = [
 		FOREIGN KEY (Type) REFERENCES ROOM_TYPES(Type),
 		FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
         );
-		
+        
+   create table IF NOT EXISTS MEETINGS (
+        ID SERIAL PRIMARY KEY,
+        Place_ID int NOT NULL,
+        Date date NOT NULL,
+        Time time NOT NULL,
+        Topic varchar(500)NOT NULL,
+	FOREIGN KEY (Place_ID) REFERENCES PLACES(ID)
+        );	
+	
    create table IF NOT EXISTS PERSONNEL (
         ID SERIAL PRIMARY KEY,
         Name varchar(50) NOT NULL,
         Surname varchar(50) NOT NULL,
         Department varchar(50) NOT NULL,
-		Professional_Title varchar(50) NOT NULL,
+	Professional_Title varchar(50) NOT NULL,
         Phone_Number varchar(13) NOT NULL,
-		Email_Address varchar(50) NOT NULL,
-		FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
-        );
-		
-   create table IF NOT EXISTS DEPARTMENTS (
-        Department_Name varchar(100) PRIMARY KEY,
-		Manager varchar(100) NOT NULL,
-		Location varchar(50) NOT NULL,
-		Capacity INT NOT NULL,
-		Website varchar(100)
+	Email_Address varchar(50) NOT NULL,
+	FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
         );
 
    create table IF NOT EXISTS PARTICIPANTS (
-		Meeting_ID INT NOT NULL,
-		Person_ID INT NOT NULL,
-		Role varchar(50) NOT NULL,
-		Attendance BOOLEAN,
-		Performance varchar(500),
-		PRIMARY KEY (Meeting_ID,Person_ID),
-		FOREIGN KEY (Meeting_ID) REFERENCES MEETINGS(ID),
-		FOREIGN KEY (Person_ID) REFERENCES PERSONNEL(ID)
-		);
+	Meeting_ID INT NOT NULL,
+	Person_ID INT NOT NULL,
+	Role varchar(50) NOT NULL,
+	Attendance BOOLEAN,
+	Performance varchar(500),
+	PRIMARY KEY (Meeting_ID,Person_ID),
+	FOREIGN KEY (Meeting_ID) REFERENCES MEETINGS(ID),
+	FOREIGN KEY (Person_ID) REFERENCES PERSONNEL(ID)
+	);
+		
    create table IF NOT EXISTS TECH (
         Name VARCHAR(100) PRIMARY KEY,
         Projector VARCHAR(100),
@@ -71,6 +72,7 @@ INIT_STATEMENTS = [
         DigitalWhiteboard VARCHAR(100),
         Manuals BYTEA
         );
+	
    create table IF NOT EXISTS COMMENTS (
         CommentID SERIAL PRIMARY KEY,
         Name VARCHAR(100) NOT NULL,
