@@ -30,13 +30,18 @@ app.add_url_rule("/tech_update_<string:name>", methods=["GET", "POST"], view_fun
 
 app.add_url_rule("/personnel", view_func=views_h.personnel_page)
 app.add_url_rule("/personnel_add", methods=["GET", "POST"], view_func=views_h.personnel_add_page)
+app.add_url_rule("/personnel_update", methods=["GET", "POST"], view_func=views_h.personnel_update_find_page)
 app.add_url_rule("/personnel_update_<int:id>", methods=["GET", "POST"], view_func=views_h.personnel_update_change_page)
+app.add_url_rule("/personnel_remove_<int:id>", methods=["GET", "POST"], view_func=views_h.personnel_remove)
 
 app.add_url_rule("/participants", view_func=views_h.participants_page)
+app.add_url_rule("/participants_remove_<int:Meeting_ID>_<int:Person_ID>", methods=["GET", "POST"], view_func=views_h.participants_remove)
 
 app.add_url_rule("/places", view_func=views_h.places_page)
 app.add_url_rule("/places_add", methods=["GET", "POST"], view_func=views_h.places_add_page)
-app.add_url_rule("/place_update_<int:id>", methods=["GET", "POST"], view_func=views_h.place_update_change_page)
+app.add_url_rule("/places_update", methods=["GET", "POST"], view_func=views_h.places_update_find_page)
+app.add_url_rule("/places_update_<int:id>", methods=["GET", "POST"], view_func=views_h.places_update_change_page)
+app.add_url_rule("/places_remove_<int:id>", methods=["GET", "POST"], view_func=views_h.places_remove)
 
 #app.add_url_rule(, view_func=views_g.tech_)
 

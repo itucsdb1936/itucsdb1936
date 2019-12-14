@@ -38,7 +38,7 @@ def personnel_add_page():
         
         STATEMENTS = [ '''
                       INSERT INTO PERSONNEL VALUES
-                          (DEFAULT, %s, %s, '%s', '%s', '%s', '%s'); ''' % (form_Name, form_Surname, form_Department, form_Professional_Title, form_Phone_Number, form_Email_Address)  ]
+                          (DEFAULT, '%s', '%s', '%s', '%s', '%s', '%s'); ''' % (form_Name, form_Surname, form_Department, form_Professional_Title, form_Phone_Number, form_Email_Address)  ]
         
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:
@@ -49,6 +49,21 @@ def personnel_add_page():
            cursor.close()
         
         return redirect(url_for("personnel_page"))
+        
+def personnel_update_find_page():
+    if request.method == "GET":
+        values = {"id":""}
+        return render_template(
+            "personnel_update_find.html", values=values
+        )
+    else:
+        valid = validate_meetings_form(request.form)
+        if not valid:
+            return render_template("personnel_update_find.html", values=request.form)
+        
+        form_id = request.form["id"]
+        
+        return redirect(url_for("personnel_update_change_page", id=form_id))
         
 def personnel_update_change_page(id):
     if request.method == "GET":
@@ -61,13 +76,14 @@ def personnel_update_change_page(id):
             cursor = connection.cursor()
             for statement in STATEMENTS:
                 cursor.execute(statement)
-                
+                values = {"id":""}
             row = cursor.fetchone()
         return render_template(
-            "personnel_update_change.html", row=row
+            "personnel_update_change.html", row=row, values=values
         )
     else:
-        form_ID = request.form["ID"]
+    
+        form_ID = request.form["id"]
         form_Name = request.form["Name"]
         form_Surname = request.form["Surname"]
         form_Department = request.form["Department"]
@@ -77,7 +93,7 @@ def personnel_update_change_page(id):
         
         STATEMENTS = [ '''
                       UPDATE PERSONNEL
-                          SET Name='%s', Surname='%s', Department='%s', Professional_Title='%s', Phone_Number=%s, Email_Address='%s'
+                          SET Name='%s', Surname='%s', Department='%s', Professional_Title='%s', Phone_Number='%s', Email_Address='%s'
                           WHERE ID=%s; ''' % (form_Name, form_Surname, form_Department, form_Professional_Title, form_Phone_Number, form_Email_Address, form_ID)  ]
         
         url= DATABASE_URL
@@ -90,7 +106,7 @@ def personnel_update_change_page(id):
         
         return redirect(url_for("personnel_page"))
         
-def personnel_remove(Meeting_ID,Person_ID):
+def personnel_remove(id):
         STATEMENTS = ['''
                               DELETE FROM PERSONNEL
                                   WHERE (ID=%s); ''' % (id)]
@@ -145,7 +161,7 @@ def places_add_page():
         
         STATEMENTS = [ '''
                       INSERT INTO PLACES VALUES
-                          (DEFAULT, %s, %s, '%s', '%s'); ''' % (form_Type, form_Department, form_Location, form_Capacity)  ]
+                          (DEFAULT, '%s', '%s', '%s', %s); ''' % (form_Type, form_Department, form_Location, form_Capacity)  ]
         
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:
@@ -157,7 +173,22 @@ def places_add_page():
         
         return redirect(url_for("places_page"))
         
-def place_update_change_page(id):
+def places_update_find_page():
+    if request.method == "GET":
+        values = {"id":""}
+        return render_template(
+            "place_update_find.html", values=values
+        )
+    else:
+        valid = validate_meetings_form(request.form)
+        if not valid:
+            return render_template("places_update_find.html", values=request.form)
+        
+        form_id = request.form["id"]
+        
+        return redirect(url_for("places_update_change_page", id=form_id))        
+        
+def places_update_change_page(id):
     if request.method == "GET":
         STATEMENTS = [ '''
                       SELECT * FROM PLACES
@@ -174,7 +205,7 @@ def place_update_change_page(id):
             "place_update_change.html", row=row
         )
     else:
-        form_ID = request.form["ID"]
+        form_ID = request.form["id"]
         form_Type = request.form["Type"]
         form_Department = request.form["Department"]
         form_Location = request.form["Location"]
@@ -195,7 +226,7 @@ def place_update_change_page(id):
         
         return redirect(url_for("places_page"))
         
-def place_remove(id):
+def places_remove(id):
         STATEMENTS = ['''
                               DELETE FROM PLACES
                                   WHERE (ID=%s); ''' % (id)]
