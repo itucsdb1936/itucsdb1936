@@ -21,7 +21,7 @@
             <td>{{ rows[i][3] }}</td>
             <td>{{ rows[i][4] }}</td>
             <td>
-                <a class="button is-link" href="{{url_for('participant_remove', Meeting_ID=rows[i][0], Person_ID=rows[i][1]) }}">
+                <a class="button is-link" href="{{url_for('participants_remove', Meeting_ID=rows[i][0], Person_ID=rows[i][1]) }}">
                     <span class="icon is-small is-left">
                       <i class="fa fa-trash"></i>
                     </span>
