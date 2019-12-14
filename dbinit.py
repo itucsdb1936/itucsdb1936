@@ -3,7 +3,7 @@ import sys
 
 import psycopg2 as dbapi2
 
-#url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
 
 
 INIT_STATEMENTS = [
@@ -20,7 +20,7 @@ INIT_STATEMENTS = [
 		Type VARCHAR(100) PRIMARY KEY,
 		Projector VARCHAR(100),
 		Presentation_Computer VARCHAR(100),
-		WhiteBoard VARCHAR(50)
+         WhiteBoard VARCHAR(50)
         );
 	
 	create table IF NOT EXISTS PLACES (
@@ -28,7 +28,7 @@ INIT_STATEMENTS = [
 		Type varchar(100) NOT NULL,
 		Department varchar(100) NOT NULL,
 		Location varchar(100) NOT NULL,
-		Capacity INT NOT NULL,
+		Capacity INT NOT NULL
         );
         
    create table IF NOT EXISTS MEETINGS (
@@ -36,7 +36,7 @@ INIT_STATEMENTS = [
         Place_ID int NOT NULL,
         Date date NOT NULL,
         Time time NOT NULL,
-        Topic varchar(500)NOT NULL,
+        Topic varchar(500) NOT NULL
         );	
 	
    create table IF NOT EXISTS PERSONNEL (
@@ -44,9 +44,9 @@ INIT_STATEMENTS = [
         Name varchar(50) NOT NULL,
         Surname varchar(50) NOT NULL,
         Department varchar(50) NOT NULL,
-	Professional_Title varchar(50) NOT NULL,
+        Professional_Title varchar(50) NOT NULL,
         Phone_Number varchar(13) NOT NULL,
-	Email_Address varchar(50) NOT NULL,
+	Email_Address varchar(50) NOT NULL
         );
 
    create table IF NOT EXISTS PARTICIPANTS (
@@ -55,7 +55,7 @@ INIT_STATEMENTS = [
 	Role varchar(50) NOT NULL,
 	Attendance BOOLEAN,
 	Performance varchar(500),
-	PRIMARY KEY (Meeting_ID,Person_ID),
+	PRIMARY KEY (Meeting_ID,Person_ID)
 	);
 		
    create table IF NOT EXISTS TECH (
@@ -95,8 +95,8 @@ def initialize(url):
 
 
 if __name__ == "__main__":
-    url = os.getenv("DATABASE_URL")
-    if url is None:
-        print("Usage: DATABASE_URL=url python dbinit.py", file=sys.stderr)
-        sys.exit(1)
+#    url = os.getenv("DATABASE_URL")
+#    if url is None:
+#        print("Usage: DATABASE_URL=url python dbinit.py", file=sys.stderr)
+#        sys.exit(1)
     initialize(url)
