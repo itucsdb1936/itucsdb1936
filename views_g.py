@@ -332,3 +332,123 @@ def tech_update_change_page(name):
             cursor.close()
         
         return redirect(url_for("tech_page"))
+    
+    
+### DEPARTMENTS
+        
+def departments_page():
+    rows = query(DATABASE_URL, "DEPARTMENTS")
+    return render_template("departments.html", rows=sorted(rows), len=len(rows))
+
+def departments_add_page():
+    if request.method == "GET":
+        return render_template(
+            "departments_add.html"
+        )
+    else:
+        form_department_name = request.form["department_name"]
+        form_manager = request.form["manager"]
+        form_location = request.form["location"]
+        form_capacity = request.form["capacity"]
+        form_website = request.form["website"]
+        
+        STATEMENTS = [ '''
+                      INSERT INTO DEPARTMENTS VALUES
+                          ('%s', '%s', '%s', %s, '%s'); ''' % (form_department_name, form_manager, form_location, form_capacity, form_website)  ]
+        
+        url= DATABASE_URL
+        with dbapi2.connect(url) as connection:
+           cursor = connection.cursor()
+           for statement in STATEMENTS:
+               cursor.execute(statement)
+        
+           cursor.close()
+        
+        return redirect(url_for("departments_page"))
+
+def departments_remove(department_name):
+        STATEMENTS = ['''
+                              DELETE FROM DEPARTMENTS
+                                  WHERE (Department_Name='%s'); ''' % (department_name)]
+
+        url= DATABASE_URL
+        with dbapi2.connect(url) as connection:
+            cursor = connection.cursor()
+            for statement in STATEMENTS:
+                cursor.execute(statement)
+
+            cursor.close()
+
+        return redirect(url_for("departments_page"))
+   
+def departments_remove_page():
+    if request.method == "GET":
+        return render_template(
+            "departments_remove.html"
+        )
+    else:        
+        form_department_name = request.form["department_name"]
+        
+        STATEMENTS = [ '''
+                      DELETE FROM DEPARTMENTS
+                          WHERE (Department_Name='%s'); ''' % (form_department_name)  ]
+
+        url= DATABASE_URL
+        with dbapi2.connect(url) as connection:
+            cursor = connection.cursor()
+            for statement in STATEMENTS:
+                cursor.execute(statement)
+
+            cursor.close()
+
+        return redirect(url_for("departments_page"))
+
+def departments_update_find_page():
+    if request.method == "GET":
+        return render_template(
+            "departments_update_find.html"
+        )
+    else:
+
+        form_department_name = request.form["department_name"]
+        
+        return redirect(url_for("departments_update_change_page", department_name=form_department_name))
+    
+def departments_update_change_page(department_name):
+    if request.method == "GET":
+        STATEMENTS = [ '''
+                      SELECT * FROM DEPARTMENTS
+                          WHERE (Department_Name='%s'); ''' % (department_name)  ]
+            
+        url= DATABASE_URL
+        with dbapi2.connect(url) as connection:
+            cursor = connection.cursor()
+            for statement in STATEMENTS:
+                cursor.execute(statement)
+                
+            row = cursor.fetchone()
+            
+        return render_template(
+            "departments_update_change.html", row=row
+        )
+    else:       
+        form_department_name = request.form["department_name"]
+        form_manager = request.form["manager"]
+        form_location = request.form["location"]
+        form_capacity = request.form["capacity"]
+        form_website = request.form["website"]
+        
+        STATEMENTS = [ '''
+                      UPDATE DEPARTMENTS
+                          SET Manager='%s', Location='%s', Capacity=%s, Website='%s'
+                          WHERE Department_Name='%s'; ''' % (form_manager, form_location, form_capacity, form_website, form_department_name)  ]
+        
+        url= DATABASE_URL
+        with dbapi2.connect(url) as connection:
+            cursor = connection.cursor()
+            for statement in STATEMENTS:
+                cursor.execute(statement)
+        
+            cursor.close()
+        
+        return redirect(url_for("departments_page"))

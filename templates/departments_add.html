@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}Edit department{% endblock %}
+{% block content %}
+    <h1 class="title">New Department</h1>
+
+    <form action="" method="post" name="meeting_add">
+      <div class="field">
+        <label for="id" class="label">Department_Name</label>
+        <div class="control">
+          <input type="text" name="department_name" class="input"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="place_id" class="label">Manager</label>
+        <div class="control">
+          <input type="text" name="manager" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="date" class="label">Location</label>
+        <div class="control">
+          <input type="text" name="location" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="time" class="label">Capacity</label>
+        <div class="control">
+          <input type="number" name="capacity" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="topic" class="label">Website</label>
+        <div class="control">
+          <input type="text" name="website" class="input"/>
+        </div>
+      </div>
+     
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary is-small">Add</button>
+        </div>
+      </div>
+    </form>
+{% endblock %}

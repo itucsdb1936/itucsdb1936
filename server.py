@@ -28,6 +28,13 @@ app.add_url_rule("/tech_remove_<string:name>", methods=["GET", "POST"], view_fun
 app.add_url_rule("/tech_update", methods=["GET", "POST"], view_func=views_g.tech_update_find_page)
 app.add_url_rule("/tech_update_<string:name>", methods=["GET", "POST"], view_func=views_g.tech_update_change_page)
 
+app.add_url_rule("/departments", view_func=views_g.departments_page)
+app.add_url_rule("/departments_add", methods=["GET", "POST"], view_func=views_g.departments_add_page)
+app.add_url_rule("/departments_remove", methods=["GET", "POST"], view_func=views_g.departments_remove_page)
+app.add_url_rule("/departments_remove_<string:department_name>", methods=["GET", "POST"], view_func=views_g.departments_remove)
+app.add_url_rule("/departments_update", methods=["GET", "POST"], view_func=views_g.departments_update_find_page)
+app.add_url_rule("/departments_update_<string:department_name>", methods=["GET", "POST"], view_func=views_g.departments_update_change_page)
+
 app.add_url_rule("/personnel", view_func=views_h.personnel_page)
 app.add_url_rule("/personnel_add", methods=["GET", "POST"], view_func=views_h.personnel_add_page)
 app.add_url_rule("/personnel_update", methods=["GET", "POST"], view_func=views_h.personnel_update_find_page)

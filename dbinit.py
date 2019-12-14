@@ -52,7 +52,7 @@ INIT_STATEMENTS = [
    create table IF NOT EXISTS PARTICIPANTS (
 	Meeting_ID INT NOT NULL,
 	Person_ID INT NOT NULL,
-	Role varchar(50) NOT NULL,
+	Role varchar(50),
 	Attendance BOOLEAN,
 	Performance varchar(500),
 	PRIMARY KEY (Meeting_ID,Person_ID)
