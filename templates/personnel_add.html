@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block title %}Add Personnel{% endblock %}
+{% block content %}
+    <h1 class="title">New Personnel</h1>
+    <form action="" method="post" name="personnel_add">
+      <div class="field">
+        <label for="id" class="label">ID</label>
+		<fieldset disabled>
+        <div class="control">
+          <input type="number" name="id" class="input" placeholder="Auto Increment"/>
+        </div>
+		</fieldset>
+      </div>
+
+      <div class="field">
+        <label for="Name" class="label">Name</label>
+        <div class="control">
+          <input type="text" name="Name" class="input"/>
+        </div>
+		</fieldset>
+      </div>
+		
+      <div class="field">
+        <label for="Surname" class="label">Surname</label>
+        <div class="control">
+          <input type="text" name="Surname" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="Department" class="label">Department</label>
+        <div class="control">
+          <input type="text" name="Department" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="Professional_Title" class="label">Professional Title</label>
+        <div class="control">
+          <input type="text" name="Professional_Title" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="Phone_Number" class="label">Phone_Number</label>
+        <div class="control">
+          <input type="number" name="Phone_Number" class="input"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="Email_Address" class="label">Email Address</label>
+        <div class="control">
+          <input type="text" name="Email_Address" class="input"/>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary is-small">Add</button>
+        </div>
+      </div>
+    </form>
+{% endblock %}

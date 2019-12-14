@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}Places{% endblock %}
+{% block content %}
+    <h1 class="title">Places</h1>
+
+    <table class="table is-narrow is-striped is-hoverable">
+    
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Department</th>
+            <th>Location</th>
+            <th>Capacity</th>
+        </tr>
+    {% for i in range(0,len) %}
+        <tr>
+            <td>{{ rows[i][0] }}</td>
+            <td>{{ rows[i][1] }}</td>
+            <td>{{ rows[i][2] }}</td>
+            <td>{{ rows[i][3] }}</td>
+            <td>{{ rows[i][4] }}</td>
+            <td>
+                <a class="button is-link" href="{{url_for('places_update_change_page', id=rows[i][0])}}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-edit"></i>
+                    </span></a>
+            </td>
+            <td>
+                <a class="button is-link" href="{{url_for('places_remove', id=rows[i][0]) }}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-trash"></i>
+                    </span>
+                </a>
+            </td>
+        </tr>
+    {%endfor%} 
+    </table>
+    <div class="field is-grouped is-grouped-centered">
+        <span class="navbar-item">
+                <a class="button is-link" href="{{ url_for('places_add_page') }}">New Place</a>
+        </span>
+    </div>
+    
+{% endblock %}

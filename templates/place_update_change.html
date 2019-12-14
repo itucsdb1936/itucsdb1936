@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}Update Places{% endblock %}
+{% block content %}
+    <h1 class="title">Update Places</h1>
+
+    <form action="" method="post" name="<place_update">
+	
+	   <div class="field">
+        <label for="id" class="label">ID</label>
+		<fieldset disabled>
+        <div class="control">
+          <input type="number" name="id" class="fixed"  value="{{ row[0] }}"/>
+        </div>
+		</fieldset>
+      </div>
+	  
+      <div class="field">
+        <label for="Type" class="label">Type</label>
+        <div class="control">
+          <input type="text" name="Type" class="input"  value="{{ row[1] }}"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="Department" class="label">Department</label>
+        <div class="control">
+          <input type="text" name="Department" class="input"  value="{{ row[2] }}"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="Capacity" class="label">Capacity</label>
+        <div class="control">
+          <input type="number" name="Capacity" class="input"  value="{{ row[3] }}"/>
+        </div>
+      </div>
+      
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary is-small">Update</button>
+        </div>
+      </div>
+    </form>
+{% endblock %}
