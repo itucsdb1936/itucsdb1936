@@ -83,7 +83,7 @@ def personnel_update_change_page(id):
         )
     else:
     
-        form_ID = request.form["id"]
+        form_ID = id
         form_Name = request.form["Name"]
         form_Surname = request.form["Surname"]
         form_Department = request.form["Department"]
@@ -199,22 +199,22 @@ def places_update_change_page(id):
             cursor = connection.cursor()
             for statement in STATEMENTS:
                 cursor.execute(statement)
-                
+            values = {"id":""}
             row = cursor.fetchone()
         return render_template(
-            "place_update_change.html", row=row
+            "place_update_change.html", row=row, values=values
         )
     else:
-        form_ID = request.form["id"]
+        form_ID = id
         form_Type = request.form["Type"]
         form_Department = request.form["Department"]
         form_Location = request.form["Location"]
         form_Capacity = request.form["Capacity"]
         
         STATEMENTS = [ '''
-                      UPDATE PERSONNEL
+                      UPDATE PLACES
                           SET Type='%s', Department='%s', Location='%s', Capacity=%s
-                          WHERE ID=%s; ''' % (form_Type, form_Department, form_Location, form_ID)  ]
+                          WHERE ID=%s; ''' % (form_Type, form_Department, form_Location, form_Capacity, form_ID)  ]
         
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:
