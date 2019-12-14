@@ -59,7 +59,7 @@ INIT_STATEMENTS = [
 		Role varchar(50) NOT NULL,
 		Attendance BOOLEAN,
 		Performance varchar(500),
-		PRIMARY KEY (Meeting_ID,Person_ID)
+		PRIMARY KEY (Meeting_ID,Person_ID),
 		FOREIGN KEY (Meeting_ID) REFERENCES MEETINGS(ID),
 		FOREIGN KEY (Person_ID) REFERENCES PERSONNEL(ID),
 		);
