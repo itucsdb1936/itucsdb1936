@@ -127,7 +127,7 @@ def participants_page():
     rows = query(DATABASE_URL, "PARTICIPANTS")
     return render_template("participants.html", rows=sorted(rows), len=len(rows))
     
-def participants_remove(meeting):
+def participants_remove(Meeting_ID,Person_ID):
         STATEMENTS = ['''
                               DELETE FROM PARTICIPANTS
                                   WHERE (Meeting_ID=%s AND Person_ID=%s); ''' % (Meeting_ID,Person_ID)]
