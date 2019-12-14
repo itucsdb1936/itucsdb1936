@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Edit tech{% endblock %}
+{% block title %}Edit meeting{% endblock %}
 {% block content %}
     <h1 class="title">Find Meeting</h1>
     
@@ -9,6 +9,11 @@
         <div class="control">
           <input type="number" name="id" class="input"/>
         </div>
+        {% if 'id' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['id'] }}
+        </p>
+        {% endif %}
       </div>
       <div class="field is-grouped">
         <div class="control">

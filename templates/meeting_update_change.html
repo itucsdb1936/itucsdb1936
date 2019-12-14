@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
-{% block title %}Edit movie{% endblock %}
+{% block title %}Edit meeting{% endblock %}
 {% block content %}
-    <h1 class="title">Change Meeting</h1>
+    <h1 class="title">Update Meeting</h1>
 
-    <form action="" method="post" name="meeting_add">
+    <form action="" method="post" name="meeting_update">
 	
       <div class="field">
         <label for="id" class="label">ID</label>
@@ -15,37 +15,28 @@
       </div>
 	
       <div class="field">
-        <label for="place_id" class="label">PlaceID</label>
+        <label for="place_id" class="label">Place_ID</label>
         <div class="control">
           <input type="number" name="place_id" class="input"  value="{{ row[1] }}"/>
         </div>
       </div>
-      
+            
       <div class="field">
-        <label for="status_id" class="label">StatusID</label>
-        <div class="control">
-          <input type="number" name="status_id" class="input"  value="{{ row[2] }}"/>
-        </div>
-      </div>
-      
-      <div class="field">
-        <label for="date" class="label">DATE</label>
+        <label for="date" class="label">Date</label>
         <div class="control">
           <input type="date" name="date" class="input"  value="{{ row[3] }}"/>
         </div>
+        {% if 'date' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['date'] }}
+        </p>
+        {% endif %}
       </div>
       
       <div class="field">
-        <label for="time" class="label">TIME</label>
+        <label for="time" class="label">Time</label>
         <div class="control">
           <input type="time" name="time" class="input"  value="{{ row[4] }}"/>
-        </div>
-      </div>
-      
-      <div class="field">
-        <label for="duration" class="label">Duration</label>
-        <div class="control">
-          <input type="time" name="duration" class="input"  value="{{ row[5] }}"/>
         </div>
       </div>
       
@@ -56,13 +47,6 @@
         </div>
       </div>
       
-      <div class="field">
-        <label for="result" class="label">RESULT</label>
-        <div class="control">
-          <input type="text" name="result" class="input"  value="{{ row[7] }}"/>
-        </div>
-      </div>
-
       <div class="field is-grouped">
         <div class="control">
           <button class="button is-primary is-small">Change</button>

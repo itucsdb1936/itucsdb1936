@@ -9,6 +9,11 @@
         <div class="control">
           <input type="number" name="id" class="input"/>
         </div>
+       {% if 'id' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['id'] }}
+        </p>
+        {% endif %} 
       </div>
       <div class="field is-grouped">
         <div class="control">

@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Edit movie{% endblock %}
+{% block title %}Edit meeting{% endblock %}
 {% block content %}
     <h1 class="title">New Meeting</h1>
 
@@ -14,37 +14,28 @@
       </div>
 
       <div class="field">
-        <label for="place_id" class="label">PlaceID</label>
+        <label for="place_id" class="label">Place_ID</label>
         <div class="control">
           <input type="number" name="place_id" class="input"/>
         </div>
       </div>
       
       <div class="field">
-        <label for="status_id" class="label">StatusID</label>
-        <div class="control">
-          <input type="number" name="status_id" class="input"/>
-        </div>
-      </div>
-      
-      <div class="field">
-        <label for="date" class="label">DATE</label>
+        <label for="date" class="label">Date</label>
         <div class="control">
           <input type="date" name="date" class="input"/>
         </div>
+        {% if 'date' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['date'] }}
+        </p>
+        {% endif %}
       </div>
       
       <div class="field">
-        <label for="time" class="label">TIME</label>
+        <label for="time" class="label">Time</label>
         <div class="control">
-          <input type="text" name="time" class="input"/>
-        </div>
-      </div>
-      
-      <div class="field">
-        <label for="duration" class="label">Duration</label>
-        <div class="control">
-          <input type="text" name="duration" class="input"/>
+          <input type="time" name="time" class="input"/>
         </div>
       </div>
       
@@ -54,14 +45,7 @@
           <input type="text" name="topic" class="input"/>
         </div>
       </div>
-      
-      <div class="field">
-        <label for="result" class="label">RESULT</label>
-        <div class="control">
-          <input type="text" name="result" class="input"/>
-        </div>
-      </div>
-
+     
       <div class="field is-grouped">
         <div class="control">
           <button class="button is-primary is-small">Add</button>
