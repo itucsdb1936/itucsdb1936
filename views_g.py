@@ -191,7 +191,7 @@ def meetings_update_change_page(id):
             "meeting_update_change.html", row=row, values=values
         )
     else:
-        valid = validate_tech_form(request.form)
+        valid = validate_meetings_form(request.form)
         if not valid:
             STATEMENTS = [ '''
                       SELECT * FROM MEETINGS
@@ -206,7 +206,7 @@ def meetings_update_change_page(id):
             row = cursor.fetchone()
             return render_template("meeting_update_change.html", row=row, values=request.form)
         
-        form_id = request.form["id"]
+        form_id = id
         form_placeid = request.form["place_id"]
         form_date = request.form["date"]
         form_time = request.form["time"]
@@ -214,8 +214,8 @@ def meetings_update_change_page(id):
         
         STATEMENTS = [ '''
                       UPDATE MEETINGS
-                          SET ID=%s, PlaceID=%s, DATE='%s', TIME='%s', Topic='%s'
-                          WHERE ID=%s; ''' % (form_id, form_placeid, form_date, form_time, form_topic, form_id)  ]
+                          SET Place_ID=%s, Date='%s', Time='%s', Topic='%s'
+                          WHERE ID=%s; ''' % (form_placeid, form_date, form_time, form_topic, form_id)  ]
         
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:
