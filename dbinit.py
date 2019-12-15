@@ -15,19 +15,18 @@ INIT_STATEMENTS = [
         Department varchar(50) NOT NULL,
         Professional_Title varchar(50) NOT NULL,
         Phone_Number varchar(13) NOT NULL,
-        Email_Address varchar(50) NOT NULL,
-        FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
+        Email_Address varchar(50) NOT NULL
         ); 
    
 	create table IF NOT EXISTS DEPARTMENTS (
 		Department_Name varchar(100) PRIMARY KEY,
-		Manager_ID varchar(100) NOT NULL,
+		Manager_ID INT NOT NULL,
 		Location varchar(50) NOT NULL,
 		Capacity INT NOT NULL,
 		Website varchar(100),
         FOREIGN KEY (Manager_ID) REFERENCES PERSONNEL(ID)
         );
-	
+        
 	create table IF NOT EXISTS ROOM_TYPES (
 		Type VARCHAR(100) PRIMARY KEY,
 		Projector VARCHAR(100),
@@ -127,6 +126,19 @@ def initialize(url):
         
         cursor.close()
 
+def add_fk_to_personnel(url):
+    alter = "ALTER TABLE PERSONNEL ADD CONSTRAINT fk_personnel_department FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)"
+    connection = dbapi2.connect(url)
+    try:
+        cursor = connection.cursor()
+        cursor.execute(alter)
+        connection.commit()
+        cursor.close()
+    except dbapi2.DatabaseError:
+        connection.rollback()
+    finally:
+        connection.close()
+
 
 if __name__ == "__main__":
 #    url = os.getenv("DATABASE_URL")
@@ -134,3 +146,5 @@ if __name__ == "__main__":
 #        print("Usage: DATABASE_URL=url python dbinit.py", file=sys.stderr)
 #        sys.exit(1)
     initialize(url)
+    add_fk_to_personnel(url)
+    
