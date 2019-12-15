@@ -418,14 +418,17 @@ def departments_add_page():
         )
     else:
         form_department_name = request.form["department_name"]
-        form_manager = request.form["manager"]
+        form_manager_id = request.form["manager_id"]
+        print ("bbbbbbbbbbbb"+form_manager_id+"adfasgfadgdsfgsdfgsdfg" )
+        if len(form_manager_id) <= 0:
+            form_manager_id = "NULL"
         form_location = request.form["location"]
         form_capacity = request.form["capacity"]
         form_website = request.form["website"]
         
         STATEMENTS = [ '''
                       INSERT INTO DEPARTMENTS VALUES
-                          ('%s', '%s', '%s', %s, '%s'); ''' % (form_department_name, form_manager, form_location, form_capacity, form_website)  ]
+                          ('%s', %s, '%s', %s, '%s'); ''' % (form_department_name, form_manager_id, form_location, form_capacity, form_website)  ]
         
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:
@@ -504,15 +507,15 @@ def departments_update_change_page(department_name):
         )
     else:       
         form_department_name = request.form["department_name"]
-        form_manager = request.form["manager"]
+        form_manager_id = request.form["manager_id"]
         form_location = request.form["location"]
         form_capacity = request.form["capacity"]
         form_website = request.form["website"]
         
         STATEMENTS = [ '''
                       UPDATE DEPARTMENTS
-                          SET Manager='%s', Location='%s', Capacity=%s, Website='%s'
-                          WHERE Department_Name='%s'; ''' % (form_manager, form_location, form_capacity, form_website, form_department_name)  ]
+                          SET manager_id=%s, Location='%s', Capacity=%s, Website='%s'
+                          WHERE Department_Name='%s'; ''' % (form_manager_id, form_location, form_capacity, form_website, form_department_name)  ]
         
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:

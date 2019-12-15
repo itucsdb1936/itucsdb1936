@@ -20,7 +20,7 @@ INIT_STATEMENTS = [
    
 	create table IF NOT EXISTS DEPARTMENTS (
 		Department_Name varchar(100) PRIMARY KEY,
-		Manager_ID INT NOT NULL,
+		Manager_ID INT,
 		Location varchar(50) NOT NULL,
 		Capacity INT NOT NULL,
 		Website varchar(100),
