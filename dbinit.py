@@ -8,19 +8,31 @@ url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335
 
 INIT_STATEMENTS = [
    '''
+    create table IF NOT EXISTS PERSONNEL (
+        ID SERIAL PRIMARY KEY,
+        Name varchar(50) NOT NULL,
+        Surname varchar(50) NOT NULL,
+        Department varchar(50) NOT NULL,
+        Professional_Title varchar(50) NOT NULL,
+        Phone_Number varchar(13) NOT NULL,
+        Email_Address varchar(50) NOT NULL,
+        FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
+        ); 
+   
 	create table IF NOT EXISTS DEPARTMENTS (
 		Department_Name varchar(100) PRIMARY KEY,
-		Manager varchar(100) NOT NULL,
+		Manager_ID varchar(100) NOT NULL,
 		Location varchar(50) NOT NULL,
 		Capacity INT NOT NULL,
-		Website varchar(100)
+		Website varchar(100),
+        FOREIGN KEY (Manager_ID) REFERENCES PERSONNEL(ID)
         );
 	
 	create table IF NOT EXISTS ROOM_TYPES (
 		Type VARCHAR(100) PRIMARY KEY,
 		Projector VARCHAR(100),
 		Presentation_Computer VARCHAR(100),
-         WhiteBoard VARCHAR(50)
+        WhiteBoard VARCHAR(50)
         );
 	
     create table IF NOT EXISTS TECH (
@@ -51,16 +63,7 @@ INIT_STATEMENTS = [
         FOREIGN KEY (Place_ID) REFERENCES PLACES(ID)
         );	
 	
-   create table IF NOT EXISTS PERSONNEL (
-        ID SERIAL PRIMARY KEY,
-        Name varchar(50) NOT NULL,
-        Surname varchar(50) NOT NULL,
-        Department varchar(50) NOT NULL,
-        Professional_Title varchar(50) NOT NULL,
-        Phone_Number varchar(13) NOT NULL,
-        Email_Address varchar(50) NOT NULL,
-        FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
-        );
+   
 
    create table IF NOT EXISTS PARTICIPANTS (
         Meeting_ID INT NOT NULL,
