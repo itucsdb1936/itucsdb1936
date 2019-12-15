@@ -8,18 +8,18 @@ url= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335
 
 INIT_STATEMENTS = [
    '''
-    create table IF NOT EXISTS PERSONNEL (
+        create table IF NOT EXISTS PERSONNEL (
         ID SERIAL PRIMARY KEY,
         Name varchar(50) NOT NULL,
         Surname varchar(50) NOT NULL,
         Department varchar(50) NOT NULL,
         Professional_Title varchar(50) NOT NULL,
-        Phone_Number varchar(13) NOT NULL,
+        Phone_Number varchar(20) NOT NULL,
         Email_Address varchar(50) NOT NULL
         ); 
    
 	create table IF NOT EXISTS DEPARTMENTS (
-		Department_Name varchar(100) PRIMARY KEY,
+		Department_Name varchar(50) PRIMARY KEY,
 		Manager_ID INT,
 		Location varchar(50) NOT NULL,
 		Capacity INT NOT NULL,
@@ -46,7 +46,7 @@ INIT_STATEMENTS = [
 	create table IF NOT EXISTS PLACES (
 		ID SERIAL PRIMARY KEY,
 		Type varchar(100) NOT NULL,
-		Department varchar(100) NOT NULL,
+		Department varchar(50) NOT NULL,
 		Location varchar(100) NOT NULL,
 		Capacity INT NOT NULL,
         FOREIGN KEY (Type) REFERENCES TECH(Name),
@@ -63,7 +63,6 @@ INIT_STATEMENTS = [
         );	
 	
    
-
    create table IF NOT EXISTS PARTICIPANTS (
         Meeting_ID INT NOT NULL,
         Person_ID INT NOT NULL,
