@@ -1,1 +1,3 @@
 drop table departments, room_types, places, meetings, personnel, participants, tech, comments;
+
+heroku pg:psql --app itucsdb1936

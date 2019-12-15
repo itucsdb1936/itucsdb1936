@@ -194,12 +194,12 @@ def meetings_update_change_page(id):
         # personnel_list.append(personnel_row[personnel][1]+' '+personnel_row[personnel][2])
         # personnel_ids.append(personnel_row[personnel][0])
         
-    # places_row= query(DATABASE_URL, "PLACES")
-    # places_ids =[]
-    # length_places=len(places_row)
+    places_row= query(DATABASE_URL, "PLACES")
+    places_ids =[]
+    length_places=len(places_row)
     
-    # for place in range(0, length_places):
-        # places_ids.append(places_row[place][0])
+    for place in range(0, length_places):
+        places_ids.append(places_row[place][0])
     
     if request.method == "GET":
         STATEMENTS = [ '''
@@ -215,7 +215,7 @@ def meetings_update_change_page(id):
             row = cursor.fetchone()
         values = {"topic":"","date":"","id":id}
         return render_template(
-            "meeting_update_change.html", row=row, values=values#,personnel_list=personnel_list, personnel_ids=personnel_ids, length=length, length_places=length_places, places_ids=places_ids
+            "meeting_update_change.html", row=row, values=values, length_places=length_places, places_ids=places_ids#,personnel_list=personnel_list, personnel_ids=personnel_ids, length=length
         )
     else:
         valid = validate_meetings_form(request.form)
@@ -232,7 +232,7 @@ def meetings_update_change_page(id):
                     cursor.execute(statement)
                     
             row = cursor.fetchone()
-            return render_template("meeting_update_change.html", row=row, values=request.form#, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length, length_places=length_places, places_ids=places_ids
+            return render_template("meeting_update_change.html", row=row, values=request.form, length_places=length_places, places_ids=places_ids#, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length
                                                                                                 )
         
         form_id = id

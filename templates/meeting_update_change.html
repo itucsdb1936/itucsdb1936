@@ -13,13 +13,26 @@
         </div>
 		</fieldset>
       </div>
-	
-      <div class="field">
-        <label for="place_id" class="label">Place_ID</label>
-        <div class="control">
-          <input type="number" name="place_id" class="input"  value="{{ row[1] }}"/>
-        </div>
-      </div>
+	  
+	  <label for="place_id" class="label">Place_ID</label>
+	  <div class="select">
+	  	<select name="place_id"  id="select_place_id">
+		  <option value="0" selected="selected"></option>
+	  	{% for i in range(0,length_places) %}
+	  	  <option value="{{ places_ids[i] }}">{{ places_ids[i] }}</option>
+	  	{% endfor %}
+	  	</select>
+	  </div>
+	  
+	  <script>
+	  
+		function select_placeid() {
+			document.getElementById("select_place_id").value = "{{ row[1] }}";
+		}
+		
+		select_placeid();
+		
+	  </script>
             
       <div class="field">
         <label for="date" class="label">Date</label>
