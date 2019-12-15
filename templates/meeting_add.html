@@ -12,13 +12,15 @@
         </div>
 		</fieldset>
       </div>
-
-      <div class="field">
-        <label for="place_id" class="label">Place_ID</label>
-        <div class="control">
-          <input type="number" name="place_id" class="input"/>
-        </div>
-      </div>
+	  
+	  <label for="place_id" class="label">Place_ID</label>
+	  <div class="select">
+	  	<select name="place_id">
+	  	{% for i in range(0,length_places) %}
+	  	  <option value="{{ places_ids[i] }}">{{ places_ids[i] }}</option>
+	  	{% endfor %}
+	  	</select>
+	  </div>
       
       <div class="field">
         <label for="date" class="label">Date</label>

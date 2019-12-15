@@ -70,16 +70,24 @@ def meetings_add_page():
     for personnel in range(0, length):
         personnel_list.append(personnel_row[personnel][1]+' '+personnel_row[personnel][2])
         personnel_ids.append(personnel_row[personnel][0])
+        
+    places_row= query(DATABASE_URL, "PLACES")
+    places_ids =[]
+    length_places=len(places_row)
+    
+    for place in range(0, length_places):
+        places_ids.append(places_row[place][0])
     
     if request.method == "GET":
         values = {"topic":"", "date":""}
         return render_template(
-            "meeting_add.html", values=values, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length
+            "meeting_add.html", values=values, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length,
+                                length_places=length_places, places_ids=places_ids
         )
     else:
         valid = validate_meetings_form(request.form)
         if not valid:
-            return render_template("meeting_add.html", values=request.form, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length)
+            return render_template("meeting_add.html", values=request.form, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length, length_places=length_places, places_ids=places_ids)
         
         form_placeid = request.form["place_id"]
         form_date = request.form["date"]
@@ -174,6 +182,23 @@ def meetings_update_find_page():
         return redirect(url_for("meetings_update_change_page", id=form_id))
     
 def meetings_update_change_page(id):
+
+    # personnel_row = query(DATABASE_URL, "PERSONNEL")        
+    # personnel_list =[]
+    # personnel_ids=[]
+    # length=len(personnel_row)
+    
+    # for personnel in range(0, length):
+        # personnel_list.append(personnel_row[personnel][1]+' '+personnel_row[personnel][2])
+        # personnel_ids.append(personnel_row[personnel][0])
+        
+    # places_row= query(DATABASE_URL, "PLACES")
+    # places_ids =[]
+    # length_places=len(places_row)
+    
+    # for place in range(0, length_places):
+        # places_ids.append(places_row[place][0])
+    
     if request.method == "GET":
         STATEMENTS = [ '''
                       SELECT * FROM MEETINGS
@@ -188,7 +213,7 @@ def meetings_update_change_page(id):
             row = cursor.fetchone()
         values = {"topic":"","date":"","id":id}
         return render_template(
-            "meeting_update_change.html", row=row, values=values
+            "meeting_update_change.html", row=row, values=values#,personnel_list=personnel_list, personnel_ids=personnel_ids, length=length, length_places=length_places, places_ids=places_ids
         )
     else:
         valid = validate_meetings_form(request.form)
@@ -196,6 +221,7 @@ def meetings_update_change_page(id):
             STATEMENTS = [ '''
                       SELECT * FROM MEETINGS
                           WHERE (ID=%s); ''' % (id)  ]
+                          
             
             url= DATABASE_URL
             with dbapi2.connect(url) as connection:
@@ -204,7 +230,8 @@ def meetings_update_change_page(id):
                     cursor.execute(statement)
                     
             row = cursor.fetchone()
-            return render_template("meeting_update_change.html", row=row, values=request.form)
+            return render_template("meeting_update_change.html", row=row, values=request.form#, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length, length_places=length_places, places_ids=places_ids
+                                                                                                )
         
         form_id = id
         form_placeid = request.form["place_id"]
@@ -216,6 +243,15 @@ def meetings_update_change_page(id):
                       UPDATE MEETINGS
                           SET Place_ID=%s, Date='%s', Time='%s', Topic='%s'
                           WHERE ID=%s; ''' % (form_placeid, form_date, form_time, form_topic, form_id)  ]
+                          
+        # form_participants = request.form.getlist("participants")
+        
+        # for participant in form_participants:
+            # print(participant)
+            # STATEMENTS.append('''
+                              # UPDATE PARTICIPANTS
+                                  # SET Person_ID=%d
+                                  # WHERE Meeting_ID=%s; ''' % (int(participant), id) )
         
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:
