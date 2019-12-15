@@ -419,7 +419,6 @@ def departments_add_page():
     else:
         form_department_name = request.form["department_name"]
         form_manager_id = request.form["manager_id"]
-        print ("bbbbbbbbbbbb"+form_manager_id+"adfasgfadgdsfgsdfgsdfg" )
         if len(form_manager_id) <= 0:
             form_manager_id = "NULL"
         form_location = request.form["location"]
