@@ -90,6 +90,8 @@ def meetings_add_page():
             return render_template("meeting_add.html", values=request.form, personnel_list=personnel_list, personnel_ids=personnel_ids, length=length, length_places=length_places, places_ids=places_ids)
         
         form_placeid = request.form["place_id"]
+        if int(form_placeid) <= 0:
+            form_placeid = "NULL"
         form_date = request.form["date"]
         form_time = request.form["time"]
         form_topic = request.form["topic"]
@@ -235,6 +237,8 @@ def meetings_update_change_page(id):
         
         form_id = id
         form_placeid = request.form["place_id"]
+        if len(form_placeid) <= 0:
+            form_placeid = "NULL"
         form_date = request.form["date"]
         form_time = request.form["time"]
         form_topic = request.form["topic"]

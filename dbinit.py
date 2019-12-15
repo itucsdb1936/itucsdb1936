@@ -55,7 +55,7 @@ INIT_STATEMENTS = [
         
    create table IF NOT EXISTS MEETINGS (
         ID SERIAL PRIMARY KEY,
-        Place_ID int,
+        Place_ID INT,
         Date date NOT NULL,
         Time time NOT NULL,
         Topic varchar(500) NOT NULL,
