@@ -384,7 +384,6 @@ def tech_update_change_page(name):
                     cursor.execute(statement)
                 
             row = cursor.fetchone()
-            row
             return render_template("tech_update_change.html", row=row, values=request.form)
         
         form_name = request.form["name"]
@@ -407,7 +406,38 @@ def tech_update_change_page(name):
             cursor.close()
         
         return redirect(url_for("tech_page"))
-    
+        
+def tech_upload_page():
+    return render_template("tech_upload.html")
+
+def tech_upload_success_page():  
+    if request.method == 'POST':  
+        form_file = request.files['file']  
+        form_file.save(form_file.filename)
+        file = open(form_file.filename, 'rb').read()
+        
+        url= DATABASE_URL
+        with dbapi2.connect(url) as connection:
+            cursor = connection.cursor()
+            cursor.execute('''
+                      UPDATE tech
+                          SET Manuals=%s
+                          WHERE Name='Tech Basic'; ''' % (dbapi2.Binary(file)))
+            cursor.close()
+      
+        return redirect(url_for("tech_page")) 
+
+def tech_download_page():
+    url= DATABASE_URL
+    with dbapi2.connect(url) as connection:
+        cursor = connection.cursor()
+        cursor.execute(''' SELECT Manuals FROM TECH 
+                       WHERE Name='Tech Basic';''' )
+        
+    blob = cursor.fetchone()
+    open('downloaded_file_'+'basic'+'.png', 'wb').write(blob[0])
+
+    return redirect(url_for("tech_page"))
     
 ### DEPARTMENTS
         

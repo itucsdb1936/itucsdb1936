@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}Edit tech{% endblock %}
+{% block content %}
+    <h1 class="title">Find tech</h1>
+	
+	<form action = "/tech_upload_success" method = "post" enctype="multipart/form-data">  
+        <div class="field">
+			<div class="control">
+				<input type="file" name="file" class="input"/> 
+			</div>
+			<div class="control">
+				<input type = "submit" value="Upload">
+			</div>
+		</div>
+   
+{% endblock %}

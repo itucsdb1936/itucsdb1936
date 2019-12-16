@@ -27,6 +27,9 @@ app.add_url_rule("/tech_remove", methods=["GET", "POST"], view_func=views_g.tech
 app.add_url_rule("/tech_remove_<string:name>", methods=["GET", "POST"], view_func=views_g.tech_remove)
 app.add_url_rule("/tech_update", methods=["GET", "POST"], view_func=views_g.tech_update_find_page)
 app.add_url_rule("/tech_update_<string:name>", methods=["GET", "POST"], view_func=views_g.tech_update_change_page)
+app.add_url_rule("/tech_upload", view_func=views_g.tech_upload_page)
+app.add_url_rule("/tech_upload_success", methods=["POST"], view_func=views_g.tech_upload_success_page)
+app.add_url_rule("/tech_download", view_func=views_g.tech_download_page)
 
 app.add_url_rule("/departments", view_func=views_g.departments_page)
 app.add_url_rule("/departments_add", methods=["GET", "POST"], view_func=views_g.departments_add_page)
