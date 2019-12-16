@@ -2,6 +2,7 @@
 {% block title %}Edit tech{% endblock %}
 {% block content %}
     <h1 class="title">Upload Manuals</h1>
+	<p class="title">(.pdf only!)</p>
 	
 	<form action = "/tech_upload_success_{{ name }}" method = "post" enctype="multipart/form-data">  
         <div class="field">
@@ -9,7 +10,7 @@
 				<input type="file" name="file" class="input"/> 
 			</div>
 			<div class="control">
-				<input type = "submit" value="Upload">
+				<input class="button is-link" type = "submit" value="Upload">
 			</div>
 		</div>
    
