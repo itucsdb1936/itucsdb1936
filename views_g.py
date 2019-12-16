@@ -247,16 +247,7 @@ def meetings_update_change_page(id):
                       UPDATE MEETINGS
                           SET Place_ID=%s, Date='%s', Time='%s', Topic='%s'
                           WHERE ID=%s; ''' % (form_placeid, form_date, form_time, form_topic, form_id)  ]
-                          
-        # form_participants = request.form.getlist("participants")
-        
-        # for participant in form_participants:
-            # print(participant)
-            # STATEMENTS.append('''
-                              # UPDATE PARTICIPANTS
-                                  # SET Person_ID=%d
-                                  # WHERE Meeting_ID=%s; ''' % (int(participant), id) )
-        
+                            
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:
             cursor = connection.cursor()
