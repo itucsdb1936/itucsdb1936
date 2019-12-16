@@ -17,7 +17,6 @@
 	  <label for="place_id" class="label">Place_ID</label>
 	  <div class="select">
 	  	<select name="place_id"  id="select_place_id">
-		  <option value="0" selected="selected"></option>
 	  	{% for i in range(0,length_places) %}
 	  	  <option value="{{ places_ids[i] }}">{{ places_ids[i] }}</option>
 	  	{% endfor %}
@@ -67,7 +66,7 @@
       
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-primary is-small">Change</button>
+          <button class="button is-primary is-small">Update</button>
         </div>
       </div>
     </form>
