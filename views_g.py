@@ -7,8 +7,9 @@ import psycopg2 as dbapi2
 
 import os
 
-#3DATABASE_URL = os.environ['DATABASE_URL']
+#DATABASE_URL = os.environ['DATABASE_URL']
 DATABASE_URL= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+
 
 def query(url, table_name):
     with dbapi2.connect(url) as connection:
@@ -54,7 +55,7 @@ def validate_meetings_form(form):
 
     return len(form.errors) == 0
 
-### MEETINGS
+### MEETINGS ###
 
 def meetings_page():
     rows = query(DATABASE_URL, "MEETINGS")
@@ -183,17 +184,7 @@ def meetings_update_find_page():
         
         return redirect(url_for("meetings_update_change_page", id=form_id))
     
-def meetings_update_change_page(id):
-
-    # personnel_row = query(DATABASE_URL, "PERSONNEL")        
-    # personnel_list =[]
-    # personnel_ids=[]
-    # length=len(personnel_row)
-    
-    # for personnel in range(0, length):
-        # personnel_list.append(personnel_row[personnel][1]+' '+personnel_row[personnel][2])
-        # personnel_ids.append(personnel_row[personnel][0])
-        
+def meetings_update_change_page(id):       
     places_row= query(DATABASE_URL, "PLACES")
     places_ids =[]
     length_places=len(places_row)
@@ -258,7 +249,7 @@ def meetings_update_change_page(id):
         
         return redirect(url_for("meetings_page"))
 
-### TECH
+### TECH ###
 
 def tech_page():
     rows = query(DATABASE_URL, "TECH")
@@ -430,7 +421,7 @@ def tech_download_page(name):
 
     return render_template("tech_download.html", name=name)
     
-### DEPARTMENTS
+### DEPARTMENTS ###
         
 def departments_page():
     rows = query(DATABASE_URL, "DEPARTMENTS")
