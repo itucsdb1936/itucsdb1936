@@ -435,9 +435,9 @@ def tech_download_page():
                        WHERE Name='Tech Basic';''' )
         
     blob = cursor.fetchone()
-    open('downloaded_file_'+'basic'+'.png', 'wb').write(blob[0])
+    open('./static/downloaded_file_'+'basic'+'.png', 'wb').write(blob[0])
 
-    return redirect(url_for("tech_page"))
+    return render_template("tech_download.html")
     
 ### DEPARTMENTS
         

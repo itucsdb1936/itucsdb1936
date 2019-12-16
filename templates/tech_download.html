@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}Edit tech{% endblock %}
+{% block content %}
+    <h1 class="title">Download tech</h1>
+	
+	<a href="{{ url_for('static', filename='downloaded_file_basic.png') }}" download>
+		<button class="button">Download</button>
+	</a>
+{% endblock %} 
