@@ -22,7 +22,16 @@
             <td>{{ rows[i][2] }}</td>
             <td>{{ rows[i][3] }}</td>
             <td>{{ rows[i][4] }}</td>
-            <td>{{ rows[i][5] }}</td>
+            <td>
+				<a class="button is-link" href="{{url_for('tech_download_page', name=rows[i][0])}}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-download"></i>
+                    </span><p>Download</p></a>
+				<a class="button is-link" href="{{url_for('tech_upload_page', name=rows[i][0]) }}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-upload"></i>
+                    </span><p>Upload</p></a>
+			</td>
             <td>
                 <a class="button is-link" href="{{url_for('tech_update_change_page', name=rows[i][0])}}">
                     <span class="icon is-small is-left">
