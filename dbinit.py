@@ -15,7 +15,8 @@ INIT_STATEMENTS = [
         Department varchar(50) NOT NULL,
         Professional_Title varchar(50) NOT NULL,
         Phone_Number varchar(20) NOT NULL,
-        Email_Address varchar(50) NOT NULL
+        Email_Address varchar(50) NOT NULL,
+	Pictures BYTEA
         ); 
    
 	create table IF NOT EXISTS DEPARTMENTS (
@@ -67,7 +68,7 @@ INIT_STATEMENTS = [
         Meeting_ID INT NOT NULL,
         Person_ID INT NOT NULL,
         Role varchar(50),
-        Attendance BOOLEAN,
+        Attendance varchar(50),
         Performance varchar(500),
         PRIMARY KEY (Meeting_ID,Person_ID),
         FOREIGN KEY (Meeting_ID) REFERENCES MEETINGS(ID),
