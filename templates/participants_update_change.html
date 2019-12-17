@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block title %}Edit Participant{% endblock %}
+{% block content %}
+    <h1 class="title">Update Department</h1>
+
+        <form action="" method="post" name="Participant_update">
+      <div class="field">
+        <label for="Meeting_ID" class="label">Meeting ID</label>
+		<fieldset disabled>
+        <div class="control">
+          <input type="text" name="Meeting_ID" class="input" value="{{ row[0] }}" required="required"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="Person_ID" class="label">Person ID</label>
+		<fieldset disabled>
+        <div class="control">
+          <input type="text" name="Person_ID" class="input" value="{{ row[1] }}" required="required"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="Role" class="label">Role</label>
+        <div class="control">
+          <input type="text" name="Role" class="input" value="{{ row[2] }}" required="required"/>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="Attendance" class="label">Attendance</label>
+        <label for="Attendance" class="radio">
+        <div class="control">
+          ✓<input type="radio" name="Attendance" value="TRUE">
+        </div>
+        </label>
+        <label for="Attendance" class="radio">
+        <div class="control">
+          X<input type="radio" name="Attendance" value="FALSE">
+        </div>
+        </label>
+      </div>
+      
+      <div class="field">
+        <label for="Performance" class="label">Performance</label>
+        <div class="control">
+          <input type="text" name="Performance" class="input" value="{{ row[4] }}" required="required"/>
+        </div>
+      </div>
+      
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary is-small">Update</button>
+        </div>
+      </div>
+    </form>
+{% endblock %}

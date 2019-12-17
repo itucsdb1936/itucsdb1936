@@ -13,7 +13,7 @@
       </div>
 
       <div class="field">
-        <label for="Type" class="label">Type</label>
+        <label for="Type" class="label">Tech</label>
         <div class="control">
           <input type="text" name="Type" class="input"/>
         </div>
@@ -22,8 +22,13 @@
 		
       <div class="field">
         <label for="Department" class="label">Department</label>
-        <div class="control">
-          <input type="text" name="Department" class="input"/>
+        <div class="select">
+          <select name="Department">
+		  <option value="0" selected="selected"></option>
+	  	 {% for i in range(0,length_departments) %}
+	  	   <option value="{{ departments_ids[i] }}">{{ departments_ids[i] }}</option>
+	  	 {% endfor %}
+	  	 </select>
         </div>
       </div>
       

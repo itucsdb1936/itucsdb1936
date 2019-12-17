@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Remove Personnel{% endblock %}
+{% block content %}
+    <h1 class="title">Remove Personnel</h1>
+
+    <form action="" method="post" name="removing_personnel">
+      
+      <label for="personnellist" class="label">Personnel</label>
+      <table class="table is-striped is-fullwidth">
+        {% for i in range(0,length) %}
+        <tr>
+          <td>
+            <label class="checkbox">
+              <input type="checkbox" name="personnellist" value="{{ personnel_ids[i] }}"/>
+              <a>{{ personnel_list[i] }}</a>
+            </label>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+     
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary is-small">Remove</button>
+        </div>
+      </div>
+    </form>
+{% endblock %}

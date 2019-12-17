@@ -9,7 +9,7 @@
         <label for="id" class="label">ID</label>
 		<fieldset disabled>
         <div class="control">
-          <input type="number" name="id" class="fixed"  value="{{ row[0] }}"/>
+          <input type="number" name="id" class="input"  value="{{ row[0] }}"/>
         </div>
 		</fieldset>
       </div>
@@ -28,13 +28,25 @@
         </div>
       </div>
       
-      <div class="field">
         <label for="Department" class="label">Department</label>
-        <div class="control">
-          <input type="text" name="Department" class="input"  value="{{ row[3] }}"/>
+        <div class="select">
+          <select name="Department", id="select_department_id">
+	  	 {% for i in range(0,length_departments) %}
+	  	   <option value="{{ departments_ids[i] }}">{{ departments_ids[i] }}</option>
+	  	 {% endfor %}
+	  	 </select>
         </div>
-      </div>
       
+	  	  <script>
+	  
+		function select_departmentid() {
+			document.getElementById("select_department_id").value = "{{ row[3] }}";
+		}
+		
+		select_departmentid();
+		
+	  </script>
+	  
       <div class="field">
         <label for="Professional_Title" class="label">Professional Title</label>
         <div class="control">

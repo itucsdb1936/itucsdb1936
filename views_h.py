@@ -23,12 +23,37 @@ def personnel_page():
     rows = query(DATABASE_URL, "PERSONNEL")
     return render_template("personnel.html", rows=sorted(rows), len=len(rows))
 
+def validate_personnel_form(form):
+    form.data = {}
+    form.errors = {}
+    
+    form_topic = form.get("Phone_Number", "").strip()
+    if len(form_topic) != 13:
+        form.errors["Phone_Number"] = "Phone Number must be 13 characters long."
+    else:
+        form.data["Phone_Number"] = form_topic
+
+    return len(form.errors) == 0
+
 def personnel_add_page():
+    departments_row= query(DATABASE_URL, "DEPARTMENTS")
+    departments_ids =[]
+    length_departments=len(departments_row)
+    
+    for department in range(0, length_departments):
+        departments_ids.append(departments_row[department][0])
+        
     if request.method == "GET":
+        values = {"Phone_Number":""}
         return render_template(
-            "personnel_add.html"
+            "personnel_add.html" , values=values, length_departments=length_departments, departments_ids=departments_ids
         )
     else:
+        valid = validate_personnel_form(request.form)
+        if not valid:
+            return render_template("personnel_add.html", values=request.form, length_departments=length_departments, departments_ids=departments_ids
+            )
+        
         form_Name = request.form["Name"]
         form_Surname = request.form["Surname"]
         form_Department = request.form["Department"]
@@ -66,6 +91,14 @@ def personnel_update_find_page():
         return redirect(url_for("personnel_update_change_page", id=form_id))
         
 def personnel_update_change_page(id):
+
+    departments_row= query(DATABASE_URL, "DEPARTMENTS")
+    departments_ids =[]
+    length_departments=len(departments_row)
+    
+    for department in range(0, length_departments):
+        departments_ids.append(departments_row[department][0])
+
     if request.method == "GET":
         STATEMENTS = [ '''
                       SELECT * FROM PERSONNEL
@@ -79,7 +112,7 @@ def personnel_update_change_page(id):
                 values = {"id":""}
             row = cursor.fetchone()
         return render_template(
-            "personnel_update_change.html", row=row, values=values
+            "personnel_update_change.html", row=row, values=values ,  length_departments=length_departments, departments_ids=departments_ids
         )
     else:
     
@@ -121,6 +154,41 @@ def personnel_remove(id):
 
         return redirect(url_for("personnel_page"))
         
+def personnel_remove_page():
+    
+    personnel_row = query(DATABASE_URL, "PERSONNEL")        
+    personnel_list =[]
+    personnel_ids=[]
+    length=len(personnel_row)
+    
+    for personnel in range(0, length):
+        personnel_list.append(personnel_row[personnel][1]+' '+personnel_row[personnel][2])
+        personnel_ids.append(personnel_row[personnel][0])
+        
+    
+    if request.method == "GET":
+        return render_template(
+            "personnel_remove.html", personnel_list=personnel_list, personnel_ids=personnel_ids, length=length,                              
+        )
+    else:
+        form_personnel = request.form.getlist("personnellist")        
+        
+        remove_personnel(form_personnel)
+        
+        return redirect(url_for("personnel_page"))
+
+def remove_personnel(personnellist):
+    STATEMENTS=[]
+    for personel in personnellist:
+        print(personel)
+        STATEMENTS.append("DELETE FROM PERSONNEL WHERE (ID=%s);" % (int(personel)) )
+    url= DATABASE_URL
+    with dbapi2.connect(url) as connection:
+       cursor = connection.cursor()
+       for statement in STATEMENTS:
+           cursor.execute(statement)
+    
+       cursor.close()
 ### PARTICIPANTS
 
 def participants_page():
@@ -141,6 +209,46 @@ def participants_remove(Meeting_ID,Person_ID):
             cursor.close()
 
         return redirect(url_for("participants_page"))
+        
+def participants_update_change_page(Meeting_ID,Person_ID):
+
+    if request.method == "GET":
+        STATEMENTS = [ '''
+                      SELECT * FROM PARTICIPANTS
+                          WHERE (Meeting_ID=%s AND Person_ID=%s); ''' % (Meeting_ID,Person_ID)  ]
+            
+        url= DATABASE_URL
+        with dbapi2.connect(url) as connection:
+            cursor = connection.cursor()
+            for statement in STATEMENTS:
+                cursor.execute(statement)
+                values = {"id":""}
+            row = cursor.fetchone()
+        return render_template(
+            "participants_update_change.html", row=row, values=values
+        )
+    else:
+    
+        form_Meeting_ID = Meeting_ID
+        form_Person_ID = Person_ID
+        form_Role = request.form["Role"]
+        form_Attendance = request.form["Attendance"]
+        form_Performance = request.form["Performance"]
+        
+        STATEMENTS = [ '''
+                      UPDATE PARTICIPANTS
+                          SET Role='%s', Attendance='%s', Performance='%s'
+                          WHERE (Meeting_ID=%s AND Person_ID=%s); ''' % (form_Role, form_Attendance, form_Performance, form_Meeting_ID, form_Person_ID)  ]
+        
+        url= DATABASE_URL
+        with dbapi2.connect(url) as connection:
+            cursor = connection.cursor()
+            for statement in STATEMENTS:
+                cursor.execute(statement)
+        
+            cursor.close()
+        
+        return redirect(url_for("participants_page"))
     
 ### PLACES
 
@@ -149,9 +257,16 @@ def places_page():
     return render_template("places.html", rows=sorted(rows), len=len(rows))
 
 def places_add_page():
+    departments_row= query(DATABASE_URL, "DEPARTMENTS")
+    departments_ids =[]
+    length_departments=len(departments_row)
+    
+    for department in range(0, length_departments):
+        departments_ids.append(departments_row[department][0])
+        
     if request.method == "GET":
         return render_template(
-            "place_add.html"
+            "place_add.html" ,  length_departments=length_departments, departments_ids=departments_ids
         )
     else:
         form_Type = request.form["Type"]
@@ -189,6 +304,14 @@ def places_update_find_page():
         return redirect(url_for("places_update_change_page", id=form_id))        
         
 def places_update_change_page(id):
+    departments_row= query(DATABASE_URL, "DEPARTMENTS")
+    departments_ids =[]
+    length_departments=len(departments_row)
+    
+    for department in range(0, length_departments):
+        departments_ids.append(departments_row[department][0])
+
+
     if request.method == "GET":
         STATEMENTS = [ '''
                       SELECT * FROM PLACES
@@ -202,7 +325,7 @@ def places_update_change_page(id):
             values = {"id":""}
             row = cursor.fetchone()
         return render_template(
-            "place_update_change.html", row=row, values=values
+            "place_update_change.html", row=row, values=values,  length_departments=length_departments, departments_ids=departments_ids
         )
     else:
         form_ID = id
