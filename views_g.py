@@ -125,7 +125,6 @@ def add_participants(participants):
     
     STATEMENTS=[]
     for participant in participants:
-        print(participant)
         STATEMENTS.append("INSERT INTO PARTICIPANTS (Meeting_ID, Person_ID) VALUES (%s, %d);" % (meeting_id[0], int(participant)) )
     
     with dbapi2.connect(url) as connection:

@@ -180,7 +180,6 @@ def personnel_remove_page():
 def remove_personnel(personnellist):
     STATEMENTS=[]
     for personel in personnellist:
-        print(personel)
         STATEMENTS.append("DELETE FROM PARTICIPANTS WHERE (Person_ID=%s);DELETE FROM PERSONNEL WHERE (ID=%s);" % (int(personel),int(personel)) )
     url= DATABASE_URL
     with dbapi2.connect(url) as connection:
