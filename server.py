@@ -59,10 +59,4 @@ app.add_url_rule("/places_remove_<int:id>", methods=["GET", "POST"], view_func=v
 
 
 if __name__ == "__main__":
-    url = os.getenv("DATABASE_URL")
-    if url is None:
-        print("Usage:DATABASE_URL=url python dbinit.py", file=sys.stderr)
-        sys.exit(1)
-    initialize(url)
-    add_fk_to_personnel(url)
     app.run()
