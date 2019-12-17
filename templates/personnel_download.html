@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}Download Pictures{% endblock %}
+{% block content %}
+    <h1 class="title">Download Pictures</h1>
+	
+	<a href="./static/downloaded_file_{{name}}.jpeg" download>
+		<button class="button is-link">Download</button>
+	</a>
+{% endblock %} 

@@ -13,6 +13,7 @@
             <th>Professional Title</th>
             <th>Phone Number</th>
             <th>Email Address</th>
+			<th>Picture</th>
 			<th>Update</th>
             <th>Remove</th>
         </tr>
@@ -25,6 +26,16 @@
             <td>{{ rows[i][4] }}</td>
             <td>{{ rows[i][5] }}</td>
             <td>{{ rows[i][6] }}</td>
+            <td>
+				<a class="button is-link" href="{{url_for('personnel_download_page', name=rows[i][1])}}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-download"></i>
+                    </span><p>Download</p></a>
+				<a class="button is-link" href="{{url_for('personnel_upload_page', name=rows[i][1]) }}">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-upload"></i>
+                    </span><p>Upload</p></a>
+			</td>
             <td>
                 <a class="button is-link" href="{{url_for('personnel_update_change_page', id=rows[i][0])}}">
                     <span class="icon is-small is-left">
@@ -46,11 +57,7 @@
                 <a class="button is-link" href="{{ url_for('personnel_add_page') }}">New Personnel</a>
         </span>
 		<span class="navbar-item">
-                <a class="button is-link" href="{{url_for('personnel_remove_page') }}">
-                    <span class="icon is-small is-left">
-                      <i class="fa fa-trash"></i>
-                    </span>
-                </a>
+                <a class="button is-link" href="{{url_for('personnel_remove_page') }}">Remove Personnel</a>
 		</span>
     </div>
     

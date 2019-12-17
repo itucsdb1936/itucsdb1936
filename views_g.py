@@ -7,8 +7,7 @@ import psycopg2 as dbapi2
 
 import os
 
-#DATABASE_URL = os.environ['DATABASE_URL']
-DATABASE_URL= "postgres://gvoybackrspqkf:339af7eacd4af135d7f93ef0df5dd3e25623e2a68da06335f5dc75855628fe95@ec2-54-247-171-30.eu-west-1.compute.amazonaws.com:5432/d7iva2beg4i1l0"
+DATABASE_URL = os.environ['DATABASE_URL']
 
 
 def query(url, table_name):
@@ -137,9 +136,9 @@ def add_participants(participants):
        cursor.close()
 
 def meetings_remove(id):
-        STATEMENTS = ['''
+        STATEMENTS = ['''DELETE FROM PARTICIPANTS WHERE (Meeting_ID=%s);
                               DELETE FROM MEETINGS
-                                  WHERE (ID=%s); ''' % (id)]
+                                  WHERE (ID=%s); ''' % (id,id)]
 
         url= DATABASE_URL
         with dbapi2.connect(url) as connection:

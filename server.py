@@ -42,6 +42,10 @@ app.add_url_rule("/personnel_update", methods=["GET", "POST"], view_func=views_h
 app.add_url_rule("/personnel_update_<int:id>", methods=["GET", "POST"], view_func=views_h.personnel_update_change_page)
 app.add_url_rule("/personnel_remove", methods=["GET", "POST"], view_func=views_h.personnel_remove_page)
 app.add_url_rule("/personnel_remove_<int:id>", methods=["GET", "POST"], view_func=views_h.personnel_remove)
+app.add_url_rule("/personnel_upload_<string:name>", view_func=views_h.personnel_upload_page)
+app.add_url_rule("/personnel_upload_success_<string:name>", methods=["POST"], view_func=views_h.personnel_upload_success_page)
+app.add_url_rule("/personnel_download_<string:name>", view_func=views_h.personnel_download_page)
+
 
 app.add_url_rule("/participants", view_func=views_h.participants_page)
 app.add_url_rule("/participants_remove_<int:Meeting_ID>_<int:Person_ID>", methods=["GET", "POST"], view_func=views_h.participants_remove)
@@ -55,4 +59,10 @@ app.add_url_rule("/places_remove_<int:id>", methods=["GET", "POST"], view_func=v
 
 
 if __name__ == "__main__":
+    url = os.getenv("DATABASE_URL")
+    if url is None:
+        print("Usage:DATABASE_URL=url python dbinit.py", file=sys.stderr)
+        sys.exit(1)
+    initialize(url)
+    add_fk_to_personnel(url)
     app.run()
