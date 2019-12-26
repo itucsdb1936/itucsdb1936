@@ -1,4 +1,4 @@
-Parts Implemented by Gökay Temizkan
+Parts Implemented by Gokay Temizkan
 ===================================
 Home Page
 ---------

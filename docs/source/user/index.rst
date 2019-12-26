@@ -14,5 +14,5 @@ screenshots whereever appropriate**
 
 .. toctree::
 
-   Gökay Temizkan
-   Hüveyscan Kamar
+   Gokay Temizkan
+   Huveyscan Kamar
