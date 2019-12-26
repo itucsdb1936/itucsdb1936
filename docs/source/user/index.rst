@@ -14,5 +14,9 @@ screenshots whereever appropriate**
 
 .. toctree::
 
-   Gokay Temizkan
-   Huveyscan Kamar
+   member1
+   member2
+   member3
+   member4
+   member5
+   
