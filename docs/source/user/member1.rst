@@ -1,5 +1,5 @@
-Parts Implemented by Member Name
-================================
+Parts Implemented by Gökay Temizkan
+===================================
 Home Page
 ---------
 
