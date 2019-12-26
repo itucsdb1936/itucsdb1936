@@ -16,4 +16,3 @@ screenshots whereever appropriate**
 
    Gökay Temizkan
    Hüveyscan Kamar
-   

@@ -54,3 +54,51 @@ Input validation:
 
 * Date cannot be past.
 * Topic cannot be blank.
+
+Remove Meeting Page
+~~~~~~~~~~~~~~~~~~~
+
+This page can be accesed by clicking on the "Remove Meeting" button below the Meetings table.
+
+A meeting can be removed in this page.
+
+	.. figure:: meetings_page_remove.png
+			  :scale: 40 %
+			  :alt: map to buried treasure
+
+			  A meeting can be removed by typing the ID of it in the form.
+
+Update Meeting Page
+~~~~~~~~~~~~~~~~~~~
+
+This page can be accesed by clicking on the "Update Meeting" button below the Meetings table.
+
+A meeting can be updated in this page.
+
+First, you will encounter with the Find Meeting page.
+
+	.. figure:: meetings_page_update_find.png
+			  :scale: 40 %
+			  :alt: map to buried treasure
+
+			  A meeting can be found to update by typing the ID of it in the form.
+
+Then, you will see the actual update page for the meeting searched, which is quite similar to Add Meeting page.
+
+	.. figure:: meetings_page_update.png
+			  :scale: 40 %
+			  :alt: map to buried treasure
+
+			  A meeting can be be updated the form.
+
+Extra Features
+~~~~~~~~~~~~~~
+
+* Remove or Update pages can be accessed clicking the buttons on the right-hand-side of every row in the table.
+
+	.. figure:: meetings_page_extras.png
+			  :scale: 40 %
+			  :alt: map to buried treasure
+
+			  A meeting can be found to update by typing the ID of it in the form.
+
