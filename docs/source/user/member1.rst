@@ -102,3 +102,16 @@ Extra Features
 
 			  A meeting can be found to update by typing the ID of it in the form.
 
+Tech Packages Page
+-------------
+
+*Tech table which includes several information about tach packages included in meeting rooms is represented here.*
+
+.. figure:: tech_page_table.png
+		  :scale: 25 %
+		  :alt: map to buried treasure
+
+		  Tech table.
+
+New Technology Package Page
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
