@@ -13,9 +13,12 @@ First, create the rule for Flask for the add method to server.py as below:
 
 	.. code-block:: python
 
-		  app.add_url_rule("/tablename_add", methods=["GET", "POST"], view_func=views_g.tablename_add_page)
+		  app.add_url_rule("/tablename_add", methods=["GET", "POST"], view_func=views.tablename_add_page)
 		  
-Then, create an HTML file and an HTML form for the method:		  
+HTML Side
+~~~~~~~~~
+
+Then, create an HTML file and an HTML form for the add method:		  
 		 
 	.. code-block:: HTML
 
@@ -40,7 +43,10 @@ Then, create an HTML file and an HTML form for the method:
 		
 		...
 
-Finally, implemend add function in your views.py file:
+Python Side Continued
+~~~~~~~~~~~~~~~~~~~~~
+
+Finally, implement add function in your views.py file:
 
 	.. code-block:: python
 
