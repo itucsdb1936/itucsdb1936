@@ -44,29 +44,29 @@ Finally, implemend add function in your views.py file:
 
 	.. code-block:: python
 
-	def tablename_add_page():
+		def tablename_add_page():
 	
-		if request.method == "GET":
-			return render_template(
-				"tablename_add.html"
-			)
-		else:
-			form_tablename_attribute = request.form["tablename_attribute"]
-			
-			...
-			
-			STATEMENTS = [ '''
-						  INSERT INTO TABLENAME VALUES
-							  (%s, ...); ''' % (form_tablename_attribute, ...)  ]
-			
-			url= DATABASE_URL
-			with dbapi2.connect(url) as connection:
-			   cursor = connection.cursor()
-			   for statement in STATEMENTS:
-				   cursor.execute(statement)
-			
-			   cursor.close()
-			
-			return redirect(url_for("tablename_page"))
+			if request.method == "GET":
+				return render_template(
+					"tablename_add.html"
+				)
+			else:
+				form_tablename_attribute = request.form["tablename_attribute"]
+				
+				...
+				
+				STATEMENTS = [ '''
+							  INSERT INTO TABLENAME VALUES
+								  (%s, ...); ''' % (form_tablename_attribute, ...)  ]
+				
+				url= DATABASE_URL
+				with dbapi2.connect(url) as connection:
+				   cursor = connection.cursor()
+				   for statement in STATEMENTS:
+					   cursor.execute(statement)
+				
+				   cursor.close()
+				
+				return redirect(url_for("tablename_page"))
 
 		
