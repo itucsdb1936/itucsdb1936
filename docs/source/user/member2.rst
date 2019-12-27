@@ -3,11 +3,11 @@ Parts Implemented by Huveyscan Kamar
 Personnel Page
 --------------
 
-* This is the page to list all existing personnel, create new personnel, update and remove existing personnel.
+*This page is the main page related to Personnel. You can list all existing personnel, create new personnel, update and remove existing personnel.
 
-In this page, you can see all the personnel are listed that has been created before. 
+In this page, you can see all the personnel are listed which has been created before. 
 
-	.. figure:: .png
+	.. figure:: PersonnelMainPage.png
 			  :scale: 40 %
 			  :alt: Main Personnel Page
 			  :align: center
@@ -18,14 +18,14 @@ In this page, you can see all the personnel are listed that has been created bef
 Add Personnel
 ~~~~~~~~~~~~~
 
-If you want to add a new personnel, you can click on the "Add Personnel" button.	  
+If you want to add a new personnel, you can click on the "New Personnel" button.	  
 
 	.. figure:: PersonnelMainPage.png
 			  :scale: 40 %
 			  :alt: Add Personnel Button
 			  :align: center
 
-			  Add Personnel Button
+			  New Personnel Button
 			  
 * This is the page to add a new personnel.
 
@@ -78,7 +78,7 @@ If you want to delete a personnel, you can click on the trash icon that showed b
 
 			  Remove Personnel Icon
 			  
-But if you want to delete more than one person, you should use the remove personnel button.
+But if you want to delete more than one personnel, you should use the remove personnel button.
 
 	.. figure:: RemoveMultiplePersonnelButton.png
 			  :scale: 40 %
@@ -97,24 +97,74 @@ But if you want to delete more than one person, you should use the remove person
 			  Remove Multiple Personnel Page
 
 Places Page
------------
+--------------
 
-* This is the page to list all existing places, create new places, update and remove existing places.
+*This page is the main page related to Places. You can list all existing places, create new places, update and remove existing places.
 
+In this page, you can see all the places are listed which has been created before. 
+
+	.. figure:: PlacesMainPage.png
+			  :scale: 40 %
+			  :alt: Main Places Page
+			  :align: center
+
+			  Main Places Page
+
+			  
 Add Places
 ~~~~~~~~~~~~~
 
+If you want to add a new place, you can click on the "New Place" button.	  
+
+	.. figure:: PlacesMainPage.png
+			  :scale: 40 %
+			  :alt: Add Places Button
+			  :align: center
+
+			  New Place Button
+			  
 * This is the page to add a new place.
+
+	.. figure:: NewPlacesPage.png
+			  :scale: 40 %
+			  :alt: Add Places Page
+			  :align: center
+
+			  Add Places Page
 
 Update Places
 ~~~~~~~~~~~~~~~~
 
+If you want to update a place, you can click on the update icon.
+
+	.. figure:: UpdateButton.png
+			  :scale: 40 %
+			  :alt: Update Places Icon
+			  :align: center
+
+			  Update Places Icon
+			  
 * This is the page to update an existing place.
 
+	.. figure:: UpdatePlacesPage.png
+			  :scale: 40 %
+			  :alt: Update Places Page Example
+			  :align: center
+
+			  Update Places Page Example
+			  
 Delete Places
 ~~~~~~~~~~~~~~~~
 
-* This is the page to remove an existing place.
+If you want to delete a place, you can click on the trash icon that showed below. It will be removed easily.
+
+	.. figure:: RemoveButton.png
+			  :scale: 40 %
+			  :alt: Remove Places Icon
+			  :align: center
+
+			  Remove Places Icon
+
 
 Participants Page
 -----------------
