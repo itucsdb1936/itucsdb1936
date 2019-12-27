@@ -20,8 +20,8 @@ Add Personnel
 
 If you want to add a new personnel, you can click on the "New Personnel" button.	  
 
-	.. figure:: PersonnelMainPage.png
-			  :scale: 40 %
+	.. figure:: NewPersonnelButton.png
+			  :scale: 100 %
 			  :alt: Add Personnel Button
 			  :align: center
 
@@ -39,7 +39,7 @@ If you want to add a new personnel, you can click on the "New Personnel" button.
 If you want to add a personnel's picture, you can use "Upload" button to upload a picture and "Download" button to download the picture.
 
 	.. figure:: DownloadUploadPersonnelButton.png
-			  :scale: 40 %
+			  :scale: 100 %
 			  :alt: Download & Update Button
 			  :align: center
 
@@ -51,7 +51,7 @@ Update Personnel
 If you want to update a personnel, you can click on the update icon.
 
 	.. figure:: UpdateButton.png
-			  :scale: 40 %
+			  :scale: 100 %
 			  :alt: Update Personnel Icon
 			  :align: center
 
@@ -72,7 +72,7 @@ Delete Personnel
 If you want to delete a personnel, you can click on the trash icon that showed below. It will be removed easily.
 
 	.. figure:: RemoveButton.png
-			  :scale: 40 %
+			  :scale: 100 %
 			  :alt: Remove Personnel Icon
 			  :align: center
 
@@ -81,7 +81,7 @@ If you want to delete a personnel, you can click on the trash icon that showed b
 But if you want to delete more than one personnel, you should use the remove personnel button.
 
 	.. figure:: RemoveMultiplePersonnelButton.png
-			  :scale: 40 %
+			  :scale: 100 %
 			  :alt: Remove Multiple Personnel Button
 			  :align: center
 
@@ -116,8 +116,8 @@ Add Places
 
 If you want to add a new place, you can click on the "New Place" button.	  
 
-	.. figure:: PlacesMainPage.png
-			  :scale: 40 %
+	.. figure:: NewPlacesButton.png
+			  :scale: 100 %
 			  :alt: Add Places Button
 			  :align: center
 
@@ -138,7 +138,7 @@ Update Places
 If you want to update a place, you can click on the update icon.
 
 	.. figure:: UpdateButton.png
-			  :scale: 40 %
+			  :scale: 100 %
 			  :alt: Update Places Icon
 			  :align: center
 
@@ -159,7 +159,7 @@ Delete Places
 If you want to delete a place, you can click on the trash icon that showed below. It will be removed easily.
 
 	.. figure:: RemoveButton.png
-			  :scale: 40 %
+			  :scale: 100 %
 			  :alt: Remove Places Icon
 			  :align: center
 
