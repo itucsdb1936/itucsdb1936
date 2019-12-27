@@ -15,24 +15,32 @@ Sixth, I placed the functions to the buttons and icons on the related page.
 As an example, all functions of Personnel Table are added. The other table's functions are implemented with almost the same logic.
 
 Personnel Table
---------------
+~~~~~~~~~~~~~~~
+
 
 *Table of this database: 
 	create table IF NOT EXISTS PERSONNEL (
         ID SERIAL PRIMARY KEY,
+		
         Name varchar(50) NOT NULL,
+		
         Surname varchar(50) NOT NULL,
+		
         Department varchar(50) NOT NULL,
+		
         Professional_Title varchar(50) NOT NULL,
+		
         Phone_Number varchar(20) NOT NULL,
+		
         Email_Address varchar(50) NOT NULL,
+		
 		Pictures BYTEA
         ); 
 			  
 I've implemented create, read, update and remove functions for this table.
 
 App Routes for Personnel Table 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 		.. figure:: AppRoutesForPersonnel.png
 			  :scale: 80 %
 			  :alt: App Routes for Personnel Table 
@@ -43,7 +51,7 @@ App Routes for Personnel Table
 
 
 Add Personnel Function
-~~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 		.. figure:: AddPersonnelFunction.png
 			  :scale: 50 %
@@ -53,7 +61,7 @@ Add Personnel Function
 			  Add Personnel Function 
 
 Update Personnel Function
-~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 			 
 		.. figure:: UpdatePersonnelFunction.png
 			  :scale: 50 %
@@ -63,7 +71,7 @@ Update Personnel Function
 			  Update Personnel Function
 			 
 Delete Personnel Function
-~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 			 
 		.. figure:: RemovePersonnelFunction.png
 			  :scale: 100 %
@@ -73,7 +81,7 @@ Delete Personnel Function
 			  Delete Personnel Function
 
 Delete Multiple Personnel Function
-
+----------------------------------
 			 
 		.. figure:: RemoveMultiplePersonnelFunction.png
 			  :scale: 100 %
@@ -83,7 +91,7 @@ Delete Multiple Personnel Function
 			  Delete Multiple Personnel Function
 
 Places Table
---------------
+~~~~~~~~~~~~
 
 *Table of this database: 
 	create table IF NOT EXISTS PLACES (
@@ -97,7 +105,8 @@ Places Table
         );
 
 App Routes for Places Table 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
+
 		.. figure:: AppRoutesForPlaces.png
 			  :scale: 80 %
 			  :alt: App Routes for Places Table 
@@ -106,7 +115,7 @@ App Routes for Places Table
 			  App Routes for Places Table 
 
 Participants Table
---------------
+~~~~~~~~~~~~~~~~~~
 
 *Table of this database: 
 	   create table IF NOT EXISTS PARTICIPANTS (
@@ -121,7 +130,7 @@ Participants Table
         );
 
 App Routes for Participants Table 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 		.. figure:: AppRoutesForParticipants.png
 			  :scale: 90 %
 			  :alt: App Routes for Participants Table 
