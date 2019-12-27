@@ -17,7 +17,7 @@ First, create the rule for Flask for the add method to server.py as below:
 		  
 Then, create an HTML file and an HTML form for the method:		  
 		 
-	.. code-block:: html
+	.. code-block:: HTML
 
 		...
 		
