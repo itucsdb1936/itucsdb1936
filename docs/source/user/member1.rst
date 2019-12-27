@@ -114,7 +114,7 @@ Extra Features
 Tech Packages Page
 -------------
 
-*Tech table which includes several information about tach packages included in meeting rooms is represented here.*
+*Tech table which includes several information about technology packages included in meeting rooms is represented here.*
 
 .. figure:: tech_page_table.png
 		  :scale: 30 %
@@ -157,7 +157,7 @@ A technology package can be removed in this page.
 
 			  A technology package can be removed by typing the name of it in the form.
 
-Update TEchnology Page
+Update Technology Page
 ~~~~~~~~~~~~~~~~~~~
 
 This page can be accesed by clicking on the "Update Technology Package" button below the table.
@@ -188,6 +188,90 @@ Extra Features
 * Remove or Update pages can be accessed clicking the buttons on the right-hand-side of every row in the table.
 
 	.. figure:: meetings_page_extras.png
+			  :scale: 50 %
+			  :alt: map to buried treasure
+			  :align: center
+
+			  Click the buttons to directly remove a tupple or do to the update page.
+
+Departments Page
+-------------
+
+*Departments table which includes several information about departments of the company is represented here.*
+
+	.. figure:: departments_page_table.png
+		  :scale: 30 %
+		  :alt: map to buried treasure
+		  :align: center
+		  
+
+		  Departments table.
+
+New Department Page
+~~~~~~~~~~~~~~~~~~~
+
+This page can be accesed by clicking on the "New Department" button below the Departments table.
+
+A new department can be added in this page.
+
+	.. figure:: departments_page_add.png
+			  :scale: 40 %
+			  :alt: map to buried treasure
+			  :align: center
+
+			  A new department can be added using the form.
+			  
+Input validation:
++++++++++++++++++
+
+* Date cannot be past.
+* Topic cannot be blank.
+
+Remove Department Page
+~~~~~~~~~~~~~~~~~~~~~~
+
+This page can be accesed by clicking on the "Remove Department" button below the Departments table.
+
+A department can be removed in this page.
+
+	.. figure:: departments_page_remove.png
+			  :scale: 50 %
+			  :alt: map to buried treasure
+			  :align: center
+
+			  A department can be removed by typing the ID of it in the form.
+
+Update Department Page
+~~~~~~~~~~~~~~~~~~~~~~
+
+This page can be accesed by clicking on the "Update Department" button below the Departments table.
+
+A department can be updated in this page.
+
+First, you will encounter with the Find Department page.
+
+	.. figure:: departments_page_update_find.png
+			  :scale: 40 %
+			  :alt: map to buried treasure
+			  :align: center
+
+			  A department can be found to update by typing the ID of it in the form.
+
+Then, you will see the actual update page for the department searched, which is quite similar to Add Department page.
+
+	.. figure:: departments_page_update.png
+			  :scale: 40 %
+			  :alt: map to buried treasure
+			  :align: center
+
+			  A department can be be updated the form.
+
+Extra Features
+~~~~~~~~~~~~~~
+
+* Remove or Update pages can be accessed clicking the buttons on the right-hand-side of every row in the table.
+
+	.. figure:: departments_page_extras.png
 			  :scale: 50 %
 			  :alt: map to buried treasure
 			  :align: center
