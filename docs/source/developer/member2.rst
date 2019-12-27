@@ -20,6 +20,7 @@ Personnel Table
 
 *Table of this database: 
 	create table IF NOT EXISTS PERSONNEL (
+	
         ID SERIAL PRIMARY KEY,
 		
         Name varchar(50) NOT NULL,
@@ -95,13 +96,21 @@ Places Table
 
 *Table of this database: 
 	create table IF NOT EXISTS PLACES (
+	
 		ID SERIAL PRIMARY KEY,
+		
 		Type varchar(100) NOT NULL,
+		
 		Department varchar(50) NOT NULL,
+		
 		Location varchar(100) NOT NULL,
+		
 		Capacity INT NOT NULL,
+		
         FOREIGN KEY (Type) REFERENCES TECH(Name),
+		
         FOREIGN KEY (Department) REFERENCES DEPARTMENTS(Department_Name)
+		
         );
 
 App Routes for Places Table 
@@ -119,14 +128,23 @@ Participants Table
 
 *Table of this database: 
 	   create table IF NOT EXISTS PARTICIPANTS (
+	   
         Meeting_ID INT NOT NULL,
+		
         Person_ID INT NOT NULL,
+		
         Role varchar(50),
+		
         Attendance varchar(50),
+		
         Performance varchar(500),
+		
         PRIMARY KEY (Meeting_ID,Person_ID),
+		
         FOREIGN KEY (Meeting_ID) REFERENCES MEETINGS(ID),
+		
         FOREIGN KEY (Person_ID) REFERENCES PERSONNEL(ID)
+		
         );
 
 App Routes for Participants Table 
