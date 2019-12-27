@@ -97,7 +97,7 @@ Then, you will see the actual update page for the meeting searched, which is qui
 			  :alt: map to buried treasure
 			  :align: center
 
-			  A meeting can be be updated the form.
+			  A meeting can be be updated using the form.
 
 Extra Features
 ~~~~~~~~~~~~~~
@@ -180,7 +180,7 @@ Then, you will see the actual update page for the technology package searched, w
 			  :alt: map to buried treasure
 			  :align: center
 
-			  A technology package can be be updated the form.
+			  A technology package can be be updated using the form.
 
 Extra Features
 ~~~~~~~~~~~~~~
@@ -234,7 +234,7 @@ This page can be accesed by clicking on the "Remove Department" button below the
 
 A department can be removed in this page.
 
-	.. figure:: departments_page_remove.png
+	.. figure:: departments_remove.png
 			  :scale: 50 %
 			  :alt: map to buried treasure
 			  :align: center
@@ -264,14 +264,14 @@ Then, you will see the actual update page for the department searched, which is 
 			  :alt: map to buried treasure
 			  :align: center
 
-			  A department can be be updated the form.
+			  A department can be be updated using the form.
 
 Extra Features
 ~~~~~~~~~~~~~~
 
 * Remove or Update pages can be accessed clicking the buttons on the right-hand-side of every row in the table.
 
-	.. figure:: departments_page_extras.png
+	.. figure:: meetings_page_extras.png
 			  :scale: 50 %
 			  :alt: map to buried treasure
 			  :align: center
