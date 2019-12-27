@@ -9,10 +9,10 @@ In this page, you can see all the personnel are listed that has been created bef
 
 	.. figure:: .png
 			  :scale: 40 %
-			  :alt: map to buried treasure
+			  :alt: Main Personnel Page
 			  :align: center
 
-			  Text
+			  Main Personnel Page
 
 			  
 Add Personnel
@@ -20,69 +20,78 @@ Add Personnel
 
 If you want to add a new personnel, you can click on the "Add Personnel" button.	  
 
-	.. figure:: .png
+	.. figure:: PersonnelMainPage.png
 			  :scale: 40 %
-			  :alt: map to buried treasure
+			  :alt: Add Personnel Button
 			  :align: center
 
 			  Add Personnel Button
 			  
 * This is the page to add a new personnel.
 
-	.. figure:: .png
+	.. figure:: NewPersonnelPage.png
 			  :scale: 40 %
-			  :alt: map to buried treasure
+			  :alt: Add Personnel Page
 			  :align: center
 
 			  Add Personnel Page
+
+If you want to add a personnel's picture, you can use "Upload" button to upload a picture and "Download" button to download the picture.
+
+	.. figure:: DownloadUploadPersonnelButton.png
+			  :scale: 40 %
+			  :alt: Download & Update Button
+			  :align: center
+
+			  Download & Update Button
 
 Update Personnel
 ~~~~~~~~~~~~~~~~
 
 If you want to update a personnel, you can click on the update icon.
 
-	.. figure:: .png
+	.. figure:: UpdateButton.png
 			  :scale: 40 %
-			  :alt: map to buried treasure
+			  :alt: Update Personnel Icon
 			  :align: center
 
 			  Update Personnel Icon
 			  
 * This is the page to update an existing personnel.
 
-	.. figure:: .png
+	.. figure:: UpdatePersonnelPage.png
 			  :scale: 40 %
-			  :alt: map to buried treasure
+			  :alt: Update Personnel Page Example
 			  :align: center
 
-			  Update Personnel Page
+			  Update Personnel Page Example
 			  
 Delete Personnel
 ~~~~~~~~~~~~~~~~
 
 If you want to delete a personnel, you can click on the trash icon that showed below. It will be removed easily.
 
-	.. figure:: .png
+	.. figure:: RemoveButton.png
 			  :scale: 40 %
-			  :alt: map to buried treasure
+			  :alt: Remove Personnel Icon
 			  :align: center
 
 			  Remove Personnel Icon
 			  
 But if you want to delete more than one person, you should use the remove personnel button.
 
-	.. figure:: .png
+	.. figure:: RemoveMultiplePersonnelButton.png
 			  :scale: 40 %
-			  :alt: map to buried treasure
+			  :alt: Remove Multiple Personnel Button
 			  :align: center
 
 			  Remove Multiple Personnel Button
 
 * This is the page to remove multiple existing personnel.
 
-	.. figure:: .png
+	.. figure:: RemovePersonnelPage.png
 			  :scale: 40 %
-			  :alt: map to buried treasure
+			  :alt: Remove Multiple Personnel Page
 			  :align: center
 
 			  Remove Multiple Personnel Page
