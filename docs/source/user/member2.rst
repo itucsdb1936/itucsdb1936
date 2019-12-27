@@ -1,5 +1,8 @@
 Parts Implemented by Huveyscan Kamar
 ================================
+
+	I hope this guide helps you to understand how can you use this module to manage your meetings. Please enjoy my guide.
+
 Personnel Page
 --------------
 
@@ -222,3 +225,4 @@ If you want to delete a participant, you can click on the trash icon that showed
 			  :align: center
 
 			  Remove Participants Icon
+			  

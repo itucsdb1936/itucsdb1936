@@ -1,5 +1,8 @@
 Parts Implemented by Huveyscan Kamar
 ================================
+			  
+	I hope this guide answers all your questions and can help you to implement a meeting module like this one. Good luck!
+
 General Logic
 ~~~~~~~~~~~~~
 First, I designed the page according to the table. And placed the buttons according to table's functions.
@@ -8,6 +11,8 @@ Third, I designed pages to be used for the functions I am going to implement suc
 Fourth, I defined function pages and also defined app routes to them. 
 Fifth, I implemented needed functions to be used in the page such as create, read, update and remove.
 Sixth, I placed the functions to the buttons and icons on the related page.
+
+As an example, all functions of Personnel Table are added. The other table's functions are implemented with almost the same logic.
 
 Personnel Table
 --------------
@@ -47,11 +52,35 @@ Add Personnel Function
 
 			  Add Personnel Function 
 
-Update Personnel
-~~~~~~~~~~~~~~~~
-			  
-Delete Personnel
-~~~~~~~~~~~~~~~~
+Update Personnel Function
+~~~~~~~~~~~~~~~~~~~~~~~
+			 
+		.. figure:: UpdatePersonnelFunction.png
+			  :scale: 50 %
+			  :alt: Update Personnel Function
+			  :align: center
+
+			  Update Personnel Function
+			 
+Delete Personnel Function
+~~~~~~~~~~~~~~~~~~~~~~~
+			 
+		.. figure:: RemovePersonnelFunction.png
+			  :scale: 100 %
+			  :alt: Delete Personnel Function
+			  :align: center
+
+			  Delete Personnel Function
+
+Delete Multiple Personnel Function
+
+			 
+		.. figure:: RemoveMultiplePersonnelFunction.png
+			  :scale: 100 %
+			  :alt: Delete Multiple Personnel Function
+			  :align: center
+
+			  Delete Multiple Personnel Function
 
 Places Table
 --------------
@@ -76,15 +105,6 @@ App Routes for Places Table
 
 			  App Routes for Places Table 
 
-Add Places
-~~~~~~~~~~~~~
-
-Update Places
-~~~~~~~~~~~~~~~~
-			  
-Delete Places
-~~~~~~~~~~~~~~~~
-
 Participants Table
 --------------
 
@@ -108,20 +128,4 @@ App Routes for Participants Table
 			  :align: center
 
 			  App Routes for Participants Table 
-
-
-Add Participants
-~~~~~~~~~~~~~
-
-Update Participants
-~~~~~~~~~~~~~~~~
 			  
-Delete Participants
-~~~~~~~~~~~~~~~~
-
-	.. figure:: .png
-			  :scale: 100 %
-			  :alt: 
-			  :align: center
-
-			  Text
