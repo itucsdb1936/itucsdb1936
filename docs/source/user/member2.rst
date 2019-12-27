@@ -36,6 +36,10 @@ If you want to add a new personnel, you can click on the "New Personnel" button.
 
 			  Add Personnel Page
 
+Note:
++++++++++++++++++
+* Phone number must be in correct form.
+
 If you want to add a personnel's picture, you can use "Upload" button to upload a picture and "Download" button to download the picture.
 
 	.. figure:: DownloadUploadPersonnelButton.png
