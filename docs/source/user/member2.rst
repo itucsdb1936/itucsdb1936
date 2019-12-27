@@ -167,16 +167,54 @@ If you want to delete a place, you can click on the trash icon that showed below
 
 
 Participants Page
------------------
+--------------
 
-* This is the page to list all existing participants, update and remove existing participants. If you want to add a new participant, you can add them by updating the related meeting.
+*This page is the main page related to Participants. You can list all existing participants, update and remove existing participants.
+
+In this page, you can see all the participants are listed which has been created before. 
+
+	.. figure:: ParticipantsMainPage.png
+			  :scale: 40 %
+			  :alt: Main Participants Page
+			  :align: center
+
+			  Main Participants Page
+
+			  
+Add Participants
+~~~~~~~~~~~~~
+
+If you want to add a new participant, you can add them by updating the related meeting. 			  
 
 Update Participants
 ~~~~~~~~~~~~~~~~
 
+If you want to update a participant, you can click on the update icon.
+
+	.. figure:: UpdateButton.png
+			  :scale: 100 %
+			  :alt: Update Participants Icon
+			  :align: center
+
+			  Update Participants Icon
+			  
 * This is the page to update an existing participant.
 
+	.. figure:: UpdateParticipantsPage.png
+			  :scale: 40 %
+			  :alt: Update Participants Page Example
+			  :align: center
+
+			  Update Participants Page Example
+			  
 Delete Participants
 ~~~~~~~~~~~~~~~~
 
-* This is the page to update an existing participant.
+If you want to delete a participant, you can click on the trash icon that showed below. It will be removed easily.
+
+	.. figure:: RemoveButton.png
+			  :scale: 100 %
+			  :alt: Remove Participants Icon
+			  :align: center
+
+			  Remove Participants Icon
